@@ -18,7 +18,7 @@ namespace Sarpong_PE1
             Console.Write("What Is Your name?");
 
             // ReadLine needs to be initialized to a variable
-            sMyName = Console.ReadLine();
+          //  sMyName = Console.ReadLine();
             bool bMyNameIsNana = true;
 
             if (bMyNameIsNana == true)
@@ -29,9 +29,9 @@ namespace Sarpong_PE1
 
             // for loops still work regularly
             // still need to replace "let" with int
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i <= 10; i++)
             {
-                Console.WriteLine(i + 1);
+                Console.WriteLine(i);
             }
         }
     }
