@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace DataType_Conversion
 {
-    static internal class Program
+    static internal partial class Program
     {
+
+        static int MyAdder(int a, int b)
+        {
+            return 1;
+        }
+
+        static double MyAdder(double a, double b)
+        {
+            return 1;
+        }
         static void Main(string[] args)
         {
             double doubleNum = 9999.999;
@@ -34,12 +44,24 @@ namespace DataType_Conversion
             {
                 byteNum = checked((byte)shortInt);
                 byteNum = Convert.ToByte(shortInt);
+
+                byteNum = byte.Parse(shortInt.ToString());
+                bool bValid = byte.TryParse(shortInt.ToString(), out byteNum);
             }
             catch
             {
+
                 // output message that data will be lost
+                Console.Write("Data was lost!");
             }
 
+            // int / int = int
+            doubleNum =  (double)longInt / shortInt; // answer will be int 
+
+            shortInt = (short)3.94; // shortInt = 3
+            MyAdder(shortInt, shortInt);
+            MyAdder(doubleNum, shortInt);
+            MyDivider(byteNum, shortInt);
 
 
 

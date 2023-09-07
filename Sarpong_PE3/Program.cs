@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.Remoting.Lifetime;
 
 
 namespace Sarpong_PE3
 {
-    
-   
+
+
 
     internal class Program
     {
@@ -14,19 +16,54 @@ namespace Sarpong_PE3
         static void Main(string[] args)
         {
 
+            bool bValid;
+               // string amountOfMoney = "3.50";
+                 double amountOfMoney2;
+
+         //   try
+           // {
+           //     bValid = double.TryParse(amountOfMoney, out amountOfMoney2);
+           //     Console.WriteLine(amountOfMoney);
+
+          //  }
+         //   catch
+          //  {
+          //      Console.Write("Money did not convert");
+         //   }
+
+            String amountOfMoney = "3.50";
+            double money = Convert.ToDouble(amountOfMoney);
+            Console.WriteLine(money);
+
+
+            
+            
+            
+
 
 
             string sValue1 = null; // value number one input
             string sValue2 = null; // value number two input
             string sValue3 = null; // value number three input
             string sValue4 = null; // value number four input
-            
+
 
             int? nValues1 = null; // value number 1 (to convert)
             int? nValues2 = null; // value number 2 (to convert)
             int? nValues3 = null; // value number 3 (to convert)
             int? nValues4 = null; // value number 4 (to convert)
+
+
+
+
+
+            Console.WriteLine("Please enter a number with a decimal precision of 2.");
+            string input = Console.ReadLine();
+            double output = double.Parse(input) + 55.0;
+            Console.WriteLine(output);
             
+
+
 
             // Prompt user to input numbers 
             Console.Write("Enter first number: ");
@@ -58,6 +95,22 @@ namespace Sarpong_PE3
                 {
                     Console.Write("Please Try Again");
                 }
+
+
+                string sName = "";
+                Console.WriteLine("Please type your name below: ");
+                sName = Console.ReadLine();
+
+                Console.WriteLine("Your name is " + sName + "!");
+
+                string englishNo = "No";
+                string spanishNo = "no";
+
+                Console.WriteLine(spanishNo);
+
+                    string myName = "Nana";
+                myName += " Sarpong";
+                Console.WriteLine(myName);
                 
             }
 
