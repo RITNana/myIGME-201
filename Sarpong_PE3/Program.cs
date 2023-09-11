@@ -36,13 +36,48 @@ namespace Sarpong_PE3
             Console.WriteLine(money);
 
 
-            
-            
-            
+            // Grade PE3 - Question 5 Solution Code:
+
+            // string to store user input
+            string sNumber = null;
+            // int to store converted string
+            int nNumber = 0;
+            // int to calculate the product
+            int nProduct = 1;
+            // loop through 4 times for user input
+            for (int i = 0; i < 4; ++i)
+            {
+                // stay in the loop until a valid integer is entered
+                do
+                {
+                    Console.Write("Enter an integer: ");
+                    sNumber = Console.ReadLine();
+                    try
+                    {
+                        // try to convert the string to an int
+                        nNumber = Convert.ToInt32(sNumber);
+                        // if successful, break from the do..while loop
+                        break;
+                    }
+                    catch
+                    {
+                        // don't do anything to catch,
+                        // loop back around and prompt for an integer
+                    }
+                } while (true);
+                // multiply the current number to the current product
+                nProduct *= nNumber;
+            }
+            Console.WriteLine("The product is: " + nProduct);
 
 
 
-            string sValue1 = null; // value number one input
+
+
+
+
+
+            /* string sValue1 = null; // value number one input
             string sValue2 = null; // value number two input
             string sValue3 = null; // value number three input
             string sValue4 = null; // value number four input
@@ -95,9 +130,10 @@ namespace Sarpong_PE3
                 {
                     Console.Write("Please Try Again");
                 }
+            */
 
 
-                string sName = "";
+            string sName = "";
                 Console.WriteLine("Please type your name below: ");
                 sName = Console.ReadLine();
 
@@ -128,4 +164,4 @@ namespace Sarpong_PE3
 
         }
     }
-}
+
