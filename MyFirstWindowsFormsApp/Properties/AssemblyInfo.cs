@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MyFirstWindowsFormsApps")]
+[assembly: AssemblyTitle("MyFirstWindowsFormsApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP")]
-[assembly: AssemblyProduct("MyFirstWindowsFormsApps")]
+[assembly: AssemblyProduct("MyFirstWindowsFormsApp")]
 [assembly: AssemblyCopyright("Copyright © HP 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fc293639-5769-4329-b0fb-941f1da80e11")]
+[assembly: Guid("b5b25bef-672e-4224-a797-64b1f1f25e3c")]
 
 // Version information for an assembly consists of the following four values:
 //
