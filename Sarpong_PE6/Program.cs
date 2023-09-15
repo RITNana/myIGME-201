@@ -54,24 +54,8 @@ namespace Sarpong_PE6
                             }
                             
                         }
-                    }
-                } while (!bValid); 
-               
-
-               
-                
-
-                // check user's input to ensure it is between 0 and 100
-              
-                
-                   
-                
-                
-
-
 
             }
-
         }
     }
 }
