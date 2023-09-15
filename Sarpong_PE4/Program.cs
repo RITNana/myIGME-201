@@ -12,12 +12,14 @@ namespace Sarpong_PE4
         static void Main(string[] args)
         {
 
+            // My attempt for the code
+
             // store two integers in two variables
             // testing truth table 
             // int var1 = 1;
             // int var2 = 2;
 
-            int? var1 = null; // this integer holds my first variable
+          /*  int? var1 = null; // this integer holds my first variable
             int? var2 = null; // this integer holds my second variable
 
             string sVar1 = ""; // first variable user input
@@ -49,7 +51,7 @@ namespace Sarpong_PE4
             if ((var1 > 10) && (var2 < 10) || (var1 < 10) && (var2 > 10)) // if var1 is bigger than 10 and var2 isnt and vice versa
             {
                 // will let user know the numbers did indeed work
-                Console.WriteLine("You have entered numbers" + var1 + " and " + var2 + ". Success!"); 
+                Console.WriteLine("You have entered numbers " + var1 + " and " + var2 + ". Success!"); 
             }
 
             else if (!(var1 > 10 && var2 > 10)) // if neither var1 or var2 is bigger than 10
@@ -57,6 +59,44 @@ namespace Sarpong_PE4
                 // will let user know the numbers were accepted
                 Console.WriteLine("You have entered numbers " + var1 + " and " + var2 + ". Success!");
             }
+          */
+            // Solution to Question 2
+
+            int var1 = 0;
+            int var2 = 0;
+            bool bValid = true;
+            do
+            {
+                do
+                {
+                    Console.Write("Please enter a number: ");
+                } while (!int.TryParse(Console.ReadLine(), out var1));
+                do
+                {
+                    Console.Write("Please enter another number: ");
+                } while (!int.TryParse(Console.ReadLine(), out var2));
+                // if either value is greater than 10
+                if (var1 > 10 || var2 > 10)
+                {
+                    // compute the XOR check to ensure both are not greater than 10
+                    bValid = (var1 > 10) ^ (var2 > 10);
+                }
+                else
+                {
+                    bValid = true;
+                }
+                if (bValid)
+                {
+                    Console.WriteLine($"Your numbers were {var1} and {var2}.");
+                }
+                else
+                {
+                    Console.WriteLine("You may not enter numbers which are both greater than 10");
+                    Console.WriteLine("Please choose two new numbers.");
+                }
+            } while (!bValid);
+
+            
 
 
 
