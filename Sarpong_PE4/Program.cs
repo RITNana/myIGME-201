@@ -74,7 +74,7 @@ namespace Sarpong_PE4
                 do
                 {
                     Console.Write("Please enter another number: ");
-                } while (!int.TryParse(Console.ReadLine(), out var2));
+                } while (!int.TryParse(Console.ReadLine(), out var2)); 
                 // if either value is greater than 10
                 if (var1 > 10 || var2 > 10)
                 {
