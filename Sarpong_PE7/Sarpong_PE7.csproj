@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E1A3253-1C89-4FFE-A9F1-CD2FAA4026D2}</ProjectGuid>
+    <ProjectGuid>{8B87ABBA-F0DC-4ECA-93EC-DEB72F473595}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Sarpong_PE7</RootNamespace>
     <AssemblyName>Sarpong_PE7</AssemblyName>
