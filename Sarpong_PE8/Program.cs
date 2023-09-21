@@ -26,6 +26,7 @@ namespace Sarpong_PE8
     // Nana Sarpong
     // PE8 - Coded Asnwers & Testing
     // 9/20/23
+    // Errors: storing values for x,y,z isn't working properly
     internal class Program
     {
         static void Main(string[] args)
