@@ -62,7 +62,7 @@ namespace Sarpong_PE8
             // prompt user to input a word to be reversed
             Console.Write("Input a word to be reversed in order: ");
             sInput = Console.ReadLine();
-
+             
             // turn word into character array of separate characters
             char[] letterArray = sInput.ToCharArray();
             Array.Reverse(letterArray);
