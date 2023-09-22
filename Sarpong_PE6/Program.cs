@@ -3,6 +3,8 @@
 
 namespace Sarpong_PE6
 {
+    //SCORE: 100/100
+
     // Nana Sarpong
     /* Create a simple number guessing game. Your program will generate a random integer number between
      0 and 100 (inclusive) and a player will try to guess it. */ 
@@ -11,6 +13,11 @@ namespace Sarpong_PE6
         // hold and compile code for program to run
         static void Main(string[] args)
         {
+
+            // Method: Main
+            // Purpose: A number guessing game
+            // Restrictions: None
+
             Random rand = new Random(); // create a new random object
             int randomNumber = rand.Next(0, 101); // set bounds for random numbers
 
