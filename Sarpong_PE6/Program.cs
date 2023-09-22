@@ -10,7 +10,7 @@ namespace Sarpong_PE6
      0 and 100 (inclusive) and a player will try to guess it. */ 
     internal class Program
     {
-        // hold and compile code for program to run
+        // hold and compile code for program to run 
         static void Main(string[] args)
         {
 
