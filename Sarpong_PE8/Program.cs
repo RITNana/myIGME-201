@@ -70,8 +70,10 @@ namespace Sarpong_PE8
             //        30 values of y for each value of x
             //        3 values for each data point: the x, y and z
 
-            double[,,] zFunc = new double[20, 30, 3];
 
+            // Correction: was 21 and 31 values (I was off one)
+            //  double[,,] zFunc = new double[20, 30, 3];
+            double[,,] zFunc = new double[21, 31, 3];
             for (x = -1; x <= 1; x += 0.1, nX++) // x goes from -1 to 1 incrementing by .1, with entire array incrementing at each index
             {
                 x = Math.Round(x, 1); // rounded to one decimla place
@@ -83,17 +85,23 @@ namespace Sarpong_PE8
                 {
                     y = Math.Round(y, 1); // rounded to one decimal place 
 
-                    z = 3 * Math.Pow(y, 2) + (2 * x) - 6; // math calculation to find z
+                    z = 3 * Math.Pow(y, 2) + (2 * x) - 1; // math calculation to find z
 
-                    z = Math.Round(z, 3); // base doff sig figs, round 2 to 3 decimal places
+                    z = Math.Round(z, 2); // base doff sig figs, round 2 to 3 decimal places
 
-                 //   zFunc[nX, nY, 0] = x; // store the values
-                  //  zFunc[nX, nY, 1] = y; // store the values
-                 //  zFunc[nX, nY, 2] = z; // store the values
+                    zFunc[nX, nY, 0] = x; // store the values
+                    zFunc[nX, nY, 1] = y; // store the values
+                   zFunc[nX, nY, 2] = z; // store the values
+
+                    // correction; incremenent values (y array index)
+                    ++y;
                 }
+               // correction: increment values;
+                ++nX; 
+                
             }
 
-            Console.WriteLine("z = " + z); // calculated z result
+          
 
 
 
