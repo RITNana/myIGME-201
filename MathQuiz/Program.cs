@@ -13,7 +13,7 @@ using System.Timers;
 // 	Add a timer to the Math Quiz Solution 
 static internal class Program
 {
-    static System.Timers.Timer timeOutTimer; // create a timer
+    static System.Timers.Timer timeOutTimer; // create a timer 
 
     static bool timerCount = false; // whether time runs out or not
 
