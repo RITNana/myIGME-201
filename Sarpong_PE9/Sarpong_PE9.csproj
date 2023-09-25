@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F48ACB7D-3F19-4FCB-8938-945AD4E937E4}</ProjectGuid>
+    <ProjectGuid>{272397EF-B673-48D6-B84E-18F56AE9C831}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MathQuiz</RootNamespace>
-    <AssemblyName>MathQuiz</AssemblyName>
+    <RootNamespace>Sarpong_PE9</RootNamespace>
+    <AssemblyName>Sarpong_PE9</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

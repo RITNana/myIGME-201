@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathQuiz", "MathQuiz.csproj", "{F48ACB7D-3F19-4FCB-8938-945AD4E937E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sarpong_PE9", "Sarpong_PE9.csproj", "{272397EF-B673-48D6-B84E-18F56AE9C831}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F48ACB7D-3F19-4FCB-8938-945AD4E937E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F48ACB7D-3F19-4FCB-8938-945AD4E937E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F48ACB7D-3F19-4FCB-8938-945AD4E937E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F48ACB7D-3F19-4FCB-8938-945AD4E937E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{272397EF-B673-48D6-B84E-18F56AE9C831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{272397EF-B673-48D6-B84E-18F56AE9C831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{272397EF-B673-48D6-B84E-18F56AE9C831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{272397EF-B673-48D6-B84E-18F56AE9C831}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3E2033A0-27E6-4009-AE2D-CAE4E4FE53DE}
+		SolutionGuid = {6990A97B-6F8A-4B3E-B09A-CFABEF85ADB1}
 	EndGlobalSection
 EndGlobal

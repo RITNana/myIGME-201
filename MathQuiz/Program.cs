@@ -1,11 +1,30 @@
 ﻿using System.IO;
 using System;
 using System.Diagnostics.Eventing.Reader;
+using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Timers;
 
-class Program
+// Nana Sarpong
+// Math Quiz - 5 second timer
+// 	Add a timer to the Math Quiz Solution 
+static internal class Program
 {
+    static System.Timers.Timer timeOutTimer; // create a timer
+
+    static bool timerCount = false; // whether time runs out or not
+
+    static void TimesUp(object sender, ElapsedEventArgs e)
+    {
+        timerCount = true;
+        Console.WriteLine("Sorry, you didn't submit an answer in the required time input any number to go to the next question."); // setting the timer to true
+    }
     static void Main()
     {
+
         // store user name
         string myName = "";
 
@@ -40,7 +59,7 @@ class Program
         string sAgain = "";
 
         // valid state
-        bool bValid;
+        bool bValid = false;
 
         Console.BackgroundColor = ConsoleColor.Black;
         Console.ForegroundColor = ConsoleColor.White;
@@ -50,6 +69,8 @@ class Program
 
         Console.WriteLine("Math Quiz!");
         Console.WriteLine();
+        timeOutTimer = new System.Timers.Timer(5000);
+        timeOutTimer.Elapsed += new ElapsedEventHandler(TimesUp);
 
         // fetch the user's name into myName
         while (true)
@@ -76,9 +97,9 @@ class Program
         {
             Console.Write("How many questions-> ");
             sQuestions = Console.ReadLine();
-            // bValid = int.TryParse(sQuestions, out nQuestions);
+            //bValid = int.TryParse(sQuestions, out nQuestions);
         } while (!int.TryParse(sQuestions, out nQuestions));
-        //while (!bValid);
+        //} while ( !bValid );
 
         Console.WriteLine();
 
@@ -89,8 +110,9 @@ class Program
             sDifficulty = Console.ReadLine();
             sDifficulty = sDifficulty.ToLower().Trim();
         } while (sDifficulty != "easy" &&
-                  sDifficulty != "medium" &&
-                  sDifficulty != "hard");
+                sDifficulty != "medium" &&
+                sDifficulty != "hard"
+                );
 
         Console.WriteLine();
 
@@ -101,6 +123,7 @@ class Program
         {
             case "easy":
                 nMaxRange = MAX_BASE;
+
                 if (myName.ToLower() == "david")
                 {
                     goto case "hard";
@@ -108,6 +131,7 @@ class Program
                 break;
 
             case "medium":
+            case "med":
                 nMaxRange = MAX_BASE * 2;
                 break;
 
@@ -117,7 +141,7 @@ class Program
         }
 
         // ask each question
-        for ( nCntr = 0; nCntr < nQuestions; ++nCntr)
+        for (nCntr = 1; nCntr <= nQuestions; ++nCntr)
         {
             // generate a random number between 0 inclusive and 3 exclusive to get the operation
             nOp = rand.Next(0, 3);
@@ -133,21 +157,35 @@ class Program
             }
 
 
+            switch (nOp)
+            {
+                case 0:
+                    nAnswer = val1 + val2;
+                    sQuestions = $"Question #{nCntr + 1}: {val1 + " (this first value is really hard)"} + {val2} ==> {val1 + val2} ";
+                    sQuestions = "Question #" + (nCntr + 1) + ": " + val1 + " + " + val2 + " ==> " + (val1 + val2) + " ";
+                    break;
+                case 1:
+                    nAnswer = val1 - val2;
+                    sQuestions = $"Question #{nCntr + 1}: {val1} - {val2} ==> ";
+                    break;
+                case 2:
+                    nAnswer = val1 * val2;
+                    sQuestions = $"Question #{nCntr + 1}: {val1} * {val2} ==> ";
+                    break;
+            }
+
             // if nOp == 0, then addition
             if (nOp == 0)
             {
                 nAnswer = val1 + val2;
                 sQuestions = $"Question #{nCntr + 1}: {val1} + {val2} ==> ";
-
             }
-
             // if nOp == 1, then subtraction
             else if (nOp == 1)
             {
                 nAnswer = val1 - val2;
                 sQuestions = $"Question #{nCntr + 1}: {val1} - {val2} ==> ";
             }
-
             // else multiplication
             else
             {
@@ -155,15 +193,29 @@ class Program
                 sQuestions = $"Question #{nCntr + 1}: {val1} * {val2} ==> ";
             }
 
+            bValid = false;
+
             // display the question and prompt for the answer until they enter a valid number
             do
             {
                 Console.WriteLine(sQuestions);
-                sResponse = Console.ReadLine();
+                timeOutTimer.Start();
+                sResponse = Console.ReadLine(); //<-- add a timer
+                timeOutTimer.Stop();
+                // can use either TryParse
+                bValid = int.TryParse(sResponse, out nResponse);
 
+                if (!bValid)
+                {
+                    Console.WriteLine("Please enter an integer");
+                }
+
+
+                // or try/catch with Parse() or Convert.ToInt32()
                 try
                 {
                     nResponse = int.Parse(sResponse);
+                    nResponse = Convert.ToInt32(sResponse);
                     bValid = true;
                 }
                 catch
@@ -174,12 +226,29 @@ class Program
             } while (!bValid);
 
             // if response == answer, output flashy reward and increment # correct
+            if (timerCount)
+            {
+                timerCount = false;
+            }
+            else if (nResponse == nAnswer)
+            {
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Well done, {0}!!", myName);
+                ++nCorrect;
+            }
             // else output stark answer
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("I'm sorry {0}, the answer is {1}", myName, nAnswer);
+            }
+
 
             // restore the screen colors
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("I'm Sorry {0}, the answer is {1},", myName, nAnswer);
 
             Console.WriteLine();
         }
@@ -187,7 +256,8 @@ class Program
         Console.WriteLine();
 
         // output how many they got correct and their score
-        Console.WriteLine($"You");
+        Console.WriteLine($"You got {nCorrect} out of {nQuestions} correct!  That is a score of {100 * (double)nCorrect / nQuestions}%");
+
 
         Console.WriteLine();
 
@@ -211,3 +281,4 @@ class Program
         } while (true);
     }
 }
+
