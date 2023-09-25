@@ -4,13 +4,22 @@ using System.IO;
 
 namespace Madlibs
 {
+
+    // SCORE: 100/100
+
+
+
+    // Nana Sarpong
+    // PE7
+    /* Practice working with strings, lists, and input/output to create a Mad Libs game.
+      Using predetermined narratives stored in a text file, gather information from the user to generate a complete story.*/
+    // Restrictions - Yes or No input is not case insensitive
     class Program
     {
-        // Nana Sarpong
-        // PE7
-       /* Practice working with strings, lists, and input/output to create a Mad Libs game.
-         Using predetermined narratives stored in a text file, gather information from the user to generate a complete story.*/
-       // Errors - Yes or No input is not case insensitive
+
+        // Method: Main
+        // Purpose: Mad Lib Application
+        // Restrictions: c:/templates/MadLibsTemplate.txt must be accessible
         static void Main(string[] args)
         {
             int numLibs = 0; // number of madlibs
@@ -49,7 +58,7 @@ namespace Madlibs
 
 
                     string line = null;
-                    while ((line = input.ReadLine()) != null) // line chosen is based on user inout
+                    while ((line = input.ReadLine()) != null) // line chosen is based on user input
                     {
                         ++numLibs;
                     }
