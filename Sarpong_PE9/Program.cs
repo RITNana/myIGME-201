@@ -63,7 +63,7 @@ namespace Sarpong_PE9
 
             Func<string> readInput; // refer to function called readInput
             readInput = Console.ReadLine; // set readInput to Console.ReadLine
-
+             
             string input = readInput(); // set a string variable to our function
 
             Console.WriteLine(input); // print to console
