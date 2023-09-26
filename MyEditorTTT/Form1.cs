@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,11 +33,12 @@ namespace MyEditor
             this.timesNewRomanToolStripMenuItem.Click += new EventHandler(TimesNewRomanToolStripMenuItem__Click);
 
             this.toolStrip.ItemClicked += new ToolStripItemClickedEventHandler(ToolStrip__ItemClicked);
-
+           
             this.richTextBox.SelectionChanged += new EventHandler(RichTextBox__SelectionChanged);
-
-
+            
+            
             this.Text = "MyEditor";
+
 
         }
 
@@ -48,7 +47,6 @@ namespace MyEditor
             richTextBox.Clear();
             this.Text = "MyEditor";
         }
-
 
         private void BoldToolStripMenuItem__Click(object sender, EventArgs e)
         {
@@ -99,6 +97,7 @@ namespace MyEditor
             richTextBox.SelectionFont = newFont;
         }
 
+
         private void TimesNewRomanToolStripMenuItem__Click(object obj, EventArgs e)
         {
             Font newFont = new Font("Times New Roman", richTextBox.SelectionFont.Size, richTextBox.SelectionFont.Style);
@@ -115,16 +114,19 @@ namespace MyEditor
                 this.underlineToolStripButton.Checked = richTextBox.SelectionFont.Underline;
 
             }
-
+             
             this.colorToolStripButton.BackColor = richTextBox.SelectionColor;
         }
 
 
-        private void OpenToolStripMenuItem__Click(object sender, EventArgs e)
+
+        private void OpenToolStripMenuItem__Click(object obj, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+
                 RichTextBoxStreamType richTextBoxStreamType = RichTextBoxStreamType.RichText;
+
                 if (openFileDialog.FileName.ToLower().Contains(".txt"))
                 {
                     richTextBoxStreamType = RichTextBoxStreamType.PlainText;
@@ -135,12 +137,14 @@ namespace MyEditor
             }
         }
 
-        private void SaveToolStripMenuItem__Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem__Click(object obj, EventArgs e)
         {
             saveFileDialog.FileName = openFileDialog.FileName;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
+
                 RichTextBoxStreamType richTextBoxStreamType = RichTextBoxStreamType.RichText;
+
                 if (saveFileDialog.FileName.ToLower().Contains(".txt"))
                 {
                     richTextBoxStreamType = RichTextBoxStreamType.PlainText;
@@ -151,22 +155,23 @@ namespace MyEditor
             }
         }
 
-        private void ExitToolStripMenuItem__Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem__Click(object obj, EventArgs e)
         {
+            saveFileDialog.FileName = openFileDialog.FileName;
             Application.Exit();
         }
 
-        private void CopyToolStripMenuItem__Click(object sender, EventArgs e)
+        private void CopyToolStripMenuItem__Click(object obj, EventArgs e)
         {
             richTextBox.Copy();
         }
 
-        private void CutToolStripMenuItem__Click(object sender, EventArgs e)
+        private void CutToolStripMenuItem__Click(object obj, EventArgs e)
         {
             richTextBox.Cut();
         }
 
-        private void PasteToolStripMenuItem__Click(object sender, EventArgs e)
+        private void PasteToolStripMenuItem__Click(object obj, EventArgs e)
         {
             richTextBox.Paste();
         }
@@ -186,11 +191,15 @@ namespace MyEditor
             {
                 fontStyle = FontStyle.Italic;
                 toolStripButton = this.italicsToolStripButton;
+
+
             }
             else if (e.ClickedItem == this.underlineToolStripButton)
             {
                 fontStyle = FontStyle.Underline;
                 toolStripButton = this.underlineToolStripButton;
+
+
             }
             else if (e.ClickedItem == this.colorToolStripButton)
             {
@@ -200,12 +209,14 @@ namespace MyEditor
                     colorToolStripButton.BackColor = colorDialog.Color;
                 }
             }
+
             if (fontStyle != FontStyle.Regular)
             {
                 toolStripButton.Checked = !toolStripButton.Checked;
 
                 SetSelectionFont(fontStyle, toolStripButton.Checked);
             }
+
         }
 
         private void SetSelectionFont(FontStyle fontStyle, bool bSet)
@@ -218,17 +229,20 @@ namespace MyEditor
             {
                 selectionFont = richTextBox.Font;
             }
-
             if (bSet)
             {
                 newFont = new Font(selectionFont, selectionFont.Style | fontStyle);
             }
             else
             {
+
+
                 newFont = new Font(selectionFont, selectionFont.Style & ~fontStyle);
             }
 
-            this.richTextBox.SelectionFont = newFont;
+            this.richTextBox.Font = newFont;
         }
+
+       
     }
 }
