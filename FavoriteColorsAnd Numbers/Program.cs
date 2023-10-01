@@ -67,7 +67,7 @@ namespace FavoriteColorAndNumber
 
 
             Console.WriteLine("");
-
+           
             int myInt = 0;
             int anotherInt = 2;
             string sFavoriteColor = null;
