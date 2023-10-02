@@ -2,11 +2,17 @@
 
 namespace NumberSort
 {
+
+    // Nana Sarpong
+    // Question 2
+    // Errors: didn't finish
     class Program
     {
         // the definition of the delegate function data type
         delegate string sortingFunction(string[] a);
 
+        // Create a console application that modifies the attached "Number Sorter" application
+        // to request sentences and sort the words in the sentence in ascending or descending alphabetical order.
         static void Main(string[] args)
         {
             // declare the unsorted and sorted arrays
@@ -122,7 +128,7 @@ namespace NumberSort
 
             // write the sorted array of numbers
             Console.WriteLine("The sorted list is: ");
-            foreach (double thisWord in aSorted)
+            foreach (string thisWord in aSorted)
             {
                 Console.Write($"{thisWord} ");
             }
@@ -154,7 +160,7 @@ namespace NumberSort
             }
 
             // return the lowest value
-            return (returnVal);
+            Console.Write(returnVal);
         }
 
         static double FindHighestValue(string[] array)
@@ -181,7 +187,7 @@ namespace NumberSort
             }
 
             // return the highest value
-            return (returnVal);
+            Console.Write(returnVal);
         }
 
 
