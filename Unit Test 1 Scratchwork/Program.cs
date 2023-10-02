@@ -11,28 +11,17 @@ namespace Unit_Test_1_Scratchwork
         static void Main(string[] args)
         {
 
-            string input1;
-            string input2;
-            double val2;
-            double val1;
-            double answer;
-            Console.WriteLine("add two doubles");
-            input1 = Console.ReadLine();
-            input2 = Console.ReadLine();
-            val1 = double.Parse(input1);
-            val2 = double.Parse(input2);
-            answer = val1 + val2;
-            answer = Math.Round(answer, 2);
-            Console.WriteLine(answer);
-           
 
 
-           /* double[][] dArray = new int[2][];
-            dArray[1] = new double[2];
-            dArray[2] = new double[1]
 
-            dArray[0][0] = 15;
-            dArray[1][2] = 5.67; */
+
+            byte byteVal;
+            short shortVal = -556;
+            byteVal = Convert.ToByte(shortVal);
+            Console.WriteLine("byteVal = {0}", byteVal);
+
+
+
 
 
 
