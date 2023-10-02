@@ -9,6 +9,9 @@ using System.Timers;
 
 namespace _3questions_Question4
 {
+    // Nana Sarpong 
+    // Question 4
+    // Errors: didn't display play again sequence
     static internal class Program
     {
         // class-level variables that are available to every method in the class
