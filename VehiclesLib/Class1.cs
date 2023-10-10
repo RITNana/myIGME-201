@@ -27,7 +27,7 @@ namespace VehiclesLib
         {
             public class Compact : Car, IPassengerCarrier
             {
-
+                 
             }
 
             public class SUV : Car, IPassengerCarrier
