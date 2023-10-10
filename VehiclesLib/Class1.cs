@@ -44,7 +44,7 @@ namespace VehiclesLib
         public abstract class Train : Vehicle
         {
             public class PassengerTrain : Train, IPassengerCarrier
-            {
+            { 
 
             } 
 
