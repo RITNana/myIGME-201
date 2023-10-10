@@ -22,6 +22,8 @@ static internal class Program
         timerCount = true;
         Console.WriteLine("Sorry, you didn't submit an answer in the required time input any number to go to the next question."); // setting the timer to true
     }
+
+    // Generate multiple operation questions with addition, subtraction, and multiplication
     static void Main()
     {
 

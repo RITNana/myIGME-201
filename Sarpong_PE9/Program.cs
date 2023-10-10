@@ -33,7 +33,7 @@ namespace Sarpong_PE9
         }
     }
 
-
+    // Create a delegate function to impersonate Console.ReadLine()
     static internal class Program
     {
 
