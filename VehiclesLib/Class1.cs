@@ -46,7 +46,7 @@ namespace VehiclesLib
             public class PassengerTrain : Train, IPassengerCarrier
             {
 
-            }
+            } 
 
             public class FreightTrain : Train, IHeavyLoadCarrier
             {
