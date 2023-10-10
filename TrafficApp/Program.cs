@@ -9,7 +9,7 @@ using VehiclesLib;
 
 namespace TrafficApp
 {
-    static internal class Program
+    static internal class Program 
     {
         static void Main(string[] args)
         {
