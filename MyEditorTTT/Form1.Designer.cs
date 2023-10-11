@@ -49,6 +49,8 @@
             this.fontToolStripButton4 = new System.Windows.Forms.ToolStripDropDownButton();
             this.mSSansSerifToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timesNewRomanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.testToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.boldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.italicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,14 +59,12 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.testToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.countdownLabel = new System.Windows.Forms.Label();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
@@ -86,6 +86,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // fileToolStripMenuItem
             // 
@@ -103,33 +104,33 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.ToolTipText = "New";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.ToolTipText = "Open";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.ToolTipText = "Save";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(125, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.ToolTipText = "Exit";
             // 
@@ -176,7 +177,7 @@
             this.fontToolStripButton4,
             this.toolStripSeparator2,
             this.testToolStripButton});
-            this.toolStrip.Location = new System.Drawing.Point(5, 0);
+            this.toolStrip.Location = new System.Drawing.Point(4, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(198, 27);
             this.toolStrip.TabIndex = 0;
@@ -239,16 +240,30 @@
             // mSSansSerifToolStripMenuItem
             // 
             this.mSSansSerifToolStripMenuItem.Name = "mSSansSerifToolStripMenuItem";
-            this.mSSansSerifToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mSSansSerifToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.mSSansSerifToolStripMenuItem.Text = "MS Sans Serif";
             this.mSSansSerifToolStripMenuItem.ToolTipText = "MS Sans Serif";
             // 
             // timesNewRomanToolStripMenuItem
             // 
             this.timesNewRomanToolStripMenuItem.Name = "timesNewRomanToolStripMenuItem";
-            this.timesNewRomanToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.timesNewRomanToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.timesNewRomanToolStripMenuItem.Text = "Times New Roman";
             this.timesNewRomanToolStripMenuItem.ToolTipText = "Times New Roman";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // testToolStripButton
+            // 
+            this.testToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.testToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("testToolStripButton.Image")));
+            this.testToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.testToolStripButton.Name = "testToolStripButton";
+            this.testToolStripButton.Size = new System.Drawing.Size(29, 24);
+            this.testToolStripButton.Text = "toolStripButton1";
             // 
             // contextMenuStrip
             // 
@@ -297,20 +312,6 @@
             this.saveFileDialog.DefaultExt = "rtf";
             this.saveFileDialog.Filter = "Rich Text Files|*.rtf|Plain Text Files|*.txt|All Files|*.*";
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
-            // 
-            // testToolStripButton
-            // 
-            this.testToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.testToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("testToolStripButton.Image")));
-            this.testToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.testToolStripButton.Name = "testToolStripButton";
-            this.testToolStripButton.Size = new System.Drawing.Size(29, 24);
-            this.testToolStripButton.Text = "toolStripButton1";
-            // 
             // toolStripContainer1
             // 
             // 
@@ -322,7 +323,7 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.countdownLabel);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.richTextBox);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 367);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 371);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 28);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -333,17 +334,6 @@
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip);
-            // 
-            // richTextBox
-            // 
-            this.richTextBox.ContextMenuStrip = this.contextMenuStrip;
-            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(800, 367);
-            this.richTextBox.TabIndex = 0;
-            this.richTextBox.Text = "";
             // 
             // statusStrip1
             // 
@@ -371,10 +361,21 @@
             this.countdownLabel.ForeColor = System.Drawing.Color.Red;
             this.countdownLabel.Location = new System.Drawing.Point(0, 0);
             this.countdownLabel.Name = "countdownLabel";
-            this.countdownLabel.Size = new System.Drawing.Size(800, 367);
+            this.countdownLabel.Size = new System.Drawing.Size(800, 371);
             this.countdownLabel.TabIndex = 2;
             this.countdownLabel.Text = "3";
             this.countdownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // richTextBox
+            // 
+            this.richTextBox.ContextMenuStrip = this.contextMenuStrip;
+            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(800, 371);
+            this.richTextBox.TabIndex = 0;
+            this.richTextBox.Text = "";
             // 
             // Form1
             // 
