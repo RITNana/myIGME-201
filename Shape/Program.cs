@@ -11,15 +11,7 @@ namespace Shape
         void DrawMe();
     }
 
-    public sealed class MyClass
-    {
-        // class members
-    }
-
-    public class myDerivedClass : MyClass
-    {
-        // class members
-    }
+   
 
 
 
