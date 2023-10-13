@@ -11,10 +11,6 @@ namespace Shape
         void DrawMe();
     }
 
-   
-
-
-
     public class Blood : IDrawObject
     {
         public virtual void DrawMe()
