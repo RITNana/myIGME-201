@@ -7,12 +7,19 @@ using System.Collections;
 using PeopleLib;
 using CourseLib;
 
+
 namespace PeopleApp
 {
+
     class PeopleApp
     {
+        public List<string> courseList = new List<string>();
+
         static void Main(string[] args)
         {
+            // add a new Courses class instance
+            Courses courses = new Courses();
+
             // create our People SortedList!
             People people = new People();
 
