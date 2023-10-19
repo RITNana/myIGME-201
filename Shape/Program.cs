@@ -143,7 +143,6 @@ namespace Shape
                 Circle circle2;
                 circle2 = circle;
                 circle2.myInt = 1;
-
                 Shape shape;
                 shape = rectangle;
                 shape.DrawMe();

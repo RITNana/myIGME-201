@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6EE5B3AB-76E8-44EE-897B-FACE9EB84E36}</ProjectGuid>
+    <ProjectGuid>{4C7AA86A-673D-49F6-B66C-304731FB7F93}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>PE14_Classy</RootNamespace>
-    <AssemblyName>PE14-Classy</AssemblyName>
+    <AssemblyName>PE14_Classy</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
