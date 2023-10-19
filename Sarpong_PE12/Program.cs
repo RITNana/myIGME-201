@@ -18,7 +18,7 @@ namespace Sarpong_PE12
         private string myString;
         
 
-        // create a publio virtual method (has to be void) called GetString
+        // create a public virtual method called GetString
         public virtual string GetString()
         {
             // Should return the string stored in the private field  myString

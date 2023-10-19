@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// Nana Sarpong
+// PE13 - PetsApp
+//Errors - none
+// Bugs - none
+// Professor Schuh
+// 10/16/23
+
 
 namespace PetApp
 {
     using PetApp;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
@@ -17,96 +25,110 @@ namespace PetApp
 
     namespace PetApp
     {
+        // create an interface called ICat to hold member methods
         public interface ICat
         {
-            void Eat();
-            void Play();
-            void Scratch();
-            void Purr();
+            void Eat(); // the cat eating
+            void Play(); // the cat playing
+            void Scratch(); // the cat scratching
+            void Purr(); // the cat purring 
         }
 
+        // create an abstract class for common functionality between multiple pet classes
         public abstract class Pet
         {
-            private string name;
-            public int age;
+            private string name; // field for name of pet
+            public int age; // field for age of pet
 
             public string Name
             {
                 get
                 {
-                    return name;
+                    return name; // return the name of the pet by reading
                 }
                 set
                 {
-                    name = value;
+                    name = value; // set value of name by writing
                 }
 
             }
-
+            // common eating functionality between pets 
             public abstract void Eat();
 
 
 
 
-
+            // common playing functionality between pets
             public abstract void Play();
 
 
 
-
+            // common "going to the vet" vunctionality for pets 
             public abstract void GotoVet();
 
 
-
+            // default constructor
             public Pet()
             {
 
             }
+            // constructors for name and age 
             public Pet(string name, int age)
             {
-                this.name = name;
-                this.age = age;
+                this.name = name; // initialize name
+                this.age = age; // initialize age
             }
 
         }
 
+        // create an interface to be used for multiple classes if need be called Dog
+        // set member methods for dogs
         public interface IDog
         {
-            void Eat();
-            void Play();
-            void Bark();
-            void NeedWalk();
-            void GotoVet();
+            
+            void Eat(); // functionality of eating
+            void Play(); // functionality of playing
+            void Bark(); // functionality of barking
+            void NeedWalk(); // functionality of going for a walk
+            void GotoVet(); // functionality of going to the vet 
 
         }
 
+        // define class as the child class to Pet and derived from ICAt interface
+        // override the member methods to allow our child class Cat to use them plus it's own personal methods 
         public class Cat : Pet, ICat
         {
+            // override to allow specificity for eating 
             public override void Eat()
             {
-                Console.WriteLine(this.Name + " Meow! Tasty!");
+                Console.WriteLine(this.Name + " Meow! Tasty!"); //phrase
             }
 
+            // override to allow specificity for playing 
             public override void Play()
             {
-                Console.WriteLine(this.Name + "Meow! Where's my ball of string?");
+                Console.WriteLine(this.Name + "Meow! Where's my ball of string?"); //phrase
             }
 
+            // basic member method for putting 
             public void Purr()
             {
-                Console.WriteLine(this.Name + " Purrrrrrrrrrrrrr");
+                Console.WriteLine(this.Name + " Purrrrrrrrrrrrrr"); //phrase
             }
 
+            // basic member method for scratching
             public void Scratch()
             {
-                Console.WriteLine(this.Name + "Meoooooooooooowwwwwww");
+                Console.WriteLine(this.Name + "Meoooooooooooowwwwwww"); //phrase
             }
 
+            // override to allow specificity for going to the vet 
             public override void GotoVet()
             {
-                Console.WriteLine(this.Name + " HISSSSS! NO! I REFUSE!");
+                Console.WriteLine(this.Name + " HISSSSS! NO! I REFUSE!"); //phrase
             }
 
+            // default cat constructor
             public Cat()
             {
 
@@ -114,48 +136,58 @@ namespace PetApp
 
         }
 
+        // child class called Dog to derive methods from Pet class and derive from interface 
         public class Dog : Pet, IDog
         {
-            public string license;
+            public string license; // license for dogs
 
+            // override to allow specificity for eating
             public override void Eat()
             {
                 Console.WriteLine(this.Name + "Woof! Boy am I hungry");
             }
 
+            // override to allow specificity for playing
             public override void Play()
             {
                 Console.WriteLine(this.Name + " Woof! Hey Owner! Let's play fetch!");
             }
 
+            // basic member method for barking
             public void Bark()
             {
                 Console.WriteLine(this.Name + " Woof Woof!");
             }
 
+
+            // basic member method for walking
             public void NeedWalk()
             {
                 Console.WriteLine(this.Name + " Woof! I need to go run!");
             }
 
+            // override to allow specificity for going to the vet
             public override void GotoVet()
             {
                 Console.WriteLine(this.Name + " BARK! BARK! NO! I DON'T WANNA GO!");
             }
 
+            // constructor holding variables for the name, license, and age and using the Pet constructor to call and set these fields 
             public Dog(string szLicense, string szName, int nAge) : base(szName, nAge)
             {
-                this.license = szLicense;
-                this.Name = szName;
-                this.age = nAge;
+                this.license = szLicense; // declare
+                this.Name = szName; // declare
+                this.age = nAge; // declare
 
             }
         }
-
+        // class to hold my list of pets in
         public class Pets
         {
+            // create public lists of my Pets (Dogs and Cats)
             public List<Pet> petList = new List<Pet>();
 
+            // implement a string-based indexer in order to access the elements in our Pet List
             public Pet this[int nPetEl]
             {
                 get
@@ -173,6 +205,7 @@ namespace PetApp
                     return (returnVal);
                 }
 
+                
                 set
                 {
                     // if the index is less than the number of list elements
@@ -189,6 +222,7 @@ namespace PetApp
                 }
             }
 
+            // return number of pets in pet list
             public int Count
             {
                 get
@@ -197,16 +231,19 @@ namespace PetApp
                 }
             }
 
+            // add pet to pet list
             public void Add(Pet pet)
             {
                 petList.Add(pet);
             }
 
+            // remove a pet from pet list 
             public void Remove(Pet pet)
             {
                 petList.Remove(pet);
             }
 
+            // remove at a specific area in pet list
             public void RemoveAt(int petEl)
             {
                 petList.RemoveAt(petEl);
@@ -218,48 +255,93 @@ namespace PetApp
 
 
     }
+    // Create new insatnces of our pets and create a for loop to see if we get a dog, a cat, or neither
+    // Add the pets we get to out list to generate responses based on the pet chosen
     internal class Program
     {
+        // new instances of class objects 
+        // randomly displays a prompt based on selected method
+       // Errors: Method isn't randomized
         static void Main(string[] args)
         {
-            Pet thisPet = null;
-            Dog dog = null;
-            Cat cat = null;
-            IDog idog = null;
-            ICat icat = null;
+            Pet thisPet = null; // declare a pet
+            Dog dog = null; // declare a dog
+            Cat cat = null; // declare a cat
+            IDog iDog = null; // name out interface IDog
+            ICat iCat = null; // name our interface ICat
 
-            Pets pets = new Pets();
+            Pets pets = new Pets(); // create our list
             Random rand = new Random();
 
-            for (int i = 0; i <= 50; i++)
+            bool restart = true;
+            while(restart) 
             {
-                // 1 in 10 chance of adding an animal
-                if (rand.Next(1, 11) == 1)
+                // loop through 50 times
+                for (int i = 0; i <= 50; i++)
                 {
-                    if (rand.Next(0, 2) == 0)
+                    // 1 in 10 chance of adding an animal
+                    if (rand.Next(1, 11) == 1)
                     {
-                        // add a dog
+                        if (rand.Next(0, 2) == 0)
+                        {
+                            // add a dog
 
-                         dog = new Dog(Console.ReadLine(), Console.ReadLine(), Convert.ToInt32(Console.ReadLine()));
-                       
-                        
+                            Console.WriteLine("You've Bought a Dog!");
 
+                            Console.Write("Dog's License: ");
+                            string dogLicense = Console.ReadLine();
 
+                            Console.Write("Dog's Name: ");
+                            string dogName = Console.ReadLine();
 
+                            Console.Write("Dog's Age: ");
+                            int dogsAge = Convert.ToInt32(Console.ReadLine());
 
+                            dog = new Dog(dogLicense, dogName, dogsAge);
+                            pets.Add(dog);
+
+                        }
+                        else
+                        {
+                            // else add a cat
+                            Console.WriteLine("You've Bought a Cat!");
+                            cat = new Cat();
+                            Console.WriteLine("Cat's Name: ");
+                            cat.Name = Console.ReadLine();
+
+                            Console.WriteLine("Cat's Age: ");
+                            cat.age = Convert.ToInt32(Console.ReadLine());
+                            pets.Add(cat);
+
+                        }
                     }
                     else
                     {
-                        // else add a cat
+                        // choose a random pet from pets and choose a random activity for the pet to do
+                        int randomIndex = rand.Next(0, pets.Count);
+                        thisPet = pets[randomIndex];
+                         
+                        
+                        if (thisPet == null)
+                        {
+                            restart = true;
+                            break;
+                        } else
+                        {
+                            restart = false;
+                        }
 
+                         if (thisPet == pets[randomIndex])
+                        {
+                            iDog = (IDog)thisPet.GetType();
+                            iDog.Eat();
+                        }
+                        
                     }
-                }
-                else
-                {
-                    // choose a random pet from pets and choose a random activity for the pet to do
-                }
 
+                }
             }
+           
 
         }
     }
