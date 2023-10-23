@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EditPerson
 {
-    public partial class Form1 : Form
+    public partial class PersonEditForm : Form
     {
-        public Form1()
+        public PersonEditForm()
         {
             InitializeComponent();
         }

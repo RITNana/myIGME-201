@@ -91,7 +91,7 @@ namespace CourseLib
 
     }
 
-    public class Course
+    public  class Course
     {
         public string courseCode;
         public string description;
@@ -106,7 +106,7 @@ namespace CourseLib
         }
     }
 
-    public class Schedule
+    public  class Schedule
     {
         public List<DayOfWeek> daysOfWeek = new List<DayOfWeek>();
         public DateTime startTime;
