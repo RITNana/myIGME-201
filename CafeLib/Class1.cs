@@ -5,6 +5,10 @@ using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 
+// Nana Sarpong
+// PE16 - Classiest
+//	Create a .NET Class Library called CafeLib.dll from the following schUML
+// Errors: None
 namespace CafeLib
 {
     public interface IMood
