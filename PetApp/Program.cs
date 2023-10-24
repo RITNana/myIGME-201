@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 // Professor Schuh
 // 10/16/23
 
+
+// Self-Graded on 10/24/23
+//SCORE: 80/100
 namespace PetApp
 {
     // create an interface called ICat to hold member methods
