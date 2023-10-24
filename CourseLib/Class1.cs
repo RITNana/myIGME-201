@@ -91,7 +91,7 @@ namespace CourseLib
 
     }
 
-    public  class Course
+    public class Course
     {
         public string courseCode;
         public string description;

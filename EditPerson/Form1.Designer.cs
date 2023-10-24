@@ -148,15 +148,15 @@
             // 
             // gpaLbel
             // 
-            this.gpaLbel.Location = new System.Drawing.Point(9, 243);
+            this.gpaLbel.Location = new System.Drawing.Point(9, 210);
             this.gpaLbel.Name = "gpaLbel";
-            this.gpaLbel.Size = new System.Drawing.Size(60, 16);
+            this.gpaLbel.Size = new System.Drawing.Size(60, 13);
             this.gpaLbel.TabIndex = 6;
             this.gpaLbel.Text = "GPA:";
             // 
             // gpaText
             // 
-            this.gpaText.Location = new System.Drawing.Point(80, 243);
+            this.gpaText.Location = new System.Drawing.Point(80, 207);
             this.gpaText.Name = "gpaText";
             this.gpaText.Size = new System.Drawing.Size(60, 22);
             this.gpaText.TabIndex = 5;
