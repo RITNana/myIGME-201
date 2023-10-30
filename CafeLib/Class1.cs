@@ -11,11 +11,13 @@ using System.Threading.Tasks;
 // Errors: None
 namespace CafeLib
 {
+    // interface to create a Mood contract that will relate to different classes in regards to restaurant service
     public interface IMood
     {
         string Mood { get; }
     }
 
+    // class for waiter that is derived from the Mood interface, defines that a waiter will have a mood when serving
     public class Waiter : IMood
     {
         public string name;
@@ -31,6 +33,7 @@ namespace CafeLib
         }
     }
 
+    //class for customer that will alosn derive from Mood interface
     public class Customer : IMood
     {
         public string name;
@@ -45,11 +48,12 @@ namespace CafeLib
     }
 
 
-
+    // interface to take orders and what orders they may be related to
     public interface ITakeOrders
     {
         void TakeOrder();
     }
+    // abstract class to contain all properties in general for a hot drink and who is receving it
     public abstract class HotDrink
     {
         public bool instant;
@@ -78,6 +82,7 @@ namespace CafeLib
 
     }
 
+    // cup of coffee is a hot drink and is one of the orders that can be taken
     public class CupOfCoffee : HotDrink, ITakeOrders
     {
         public string beanType;
@@ -98,6 +103,7 @@ namespace CafeLib
         }
     }
 
+    // cup of tea is a hot drink that is one of the orders that can be taken
     public class CupOfTea : HotDrink, ITakeOrders
     {
         public string leafType;
@@ -118,6 +124,7 @@ namespace CafeLib
         }
     }
 
+    // cup of cocoa with its ingredients and its classification as a hot drink (order can be taken for item)
     public class CupOfCocoa : HotDrink, ITakeOrders
     {
         public static int numCaps;
