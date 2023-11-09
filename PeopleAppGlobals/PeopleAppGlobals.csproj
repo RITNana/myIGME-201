@@ -4,10 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5E1100B2-81AA-494D-A71A-F68D8D8B30E8}</ProjectGuid>
+    <ProjectGuid>{F79B707B-7357-4E1F-AECA-ED90C2D6EF7E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>PeopleList</RootNamespace>
-    <AssemblyName>PeopleList</AssemblyName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PeopleAppGlobals</RootNamespace>
+    <AssemblyName>PeopleAppGlobals</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -30,11 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EditPerson">
-      <HintPath>..\EditPerson\bin\Debug\EditPerson.dll</HintPath>
-    </Reference>
-    <Reference Include="PeopleAppGlobals">
-      <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
+    <Reference Include="CourseLib">
+      <HintPath>..\CourseLib\bin\Debug\CourseLib.dll</HintPath>
     </Reference>
     <Reference Include="PeopleLib">
       <HintPath>..\PeopleLib\bin\Debug\PeopleLib.dll</HintPath>
@@ -45,25 +43,12 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PeopleListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PeopleListForm.Designer.cs">
-      <DependentUpon>PeopleListForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="PeopleListForm.resx">
-      <DependentUpon>PeopleListForm.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

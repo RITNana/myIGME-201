@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PeopleAppGlobals;
+using PeopleList;
 
-namespace EditPerson
+
+namespace WindowsPeopleApp
 {
     internal static class Program
     {
@@ -14,9 +17,12 @@ namespace EditPerson
         [STAThread]
         static void Main()
         {
+            Globals.AddCoursesSampleData();
+            Globals.AddPeopleSampleData();
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new PersonEditForm());
+            Application.Run(new PeopleListForm()); 
         }
     }
 }

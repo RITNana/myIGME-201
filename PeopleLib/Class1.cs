@@ -4,10 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 namespace PeopleLib
 {
+    public enum EFavoriteFood
+    {
+        brocolli,
+        pizza,
+        apples
+    }
+
+    public enum ERating
+    {
+        great,
+        ok,
+        meh
+    }
+
     public enum genderPronoun
     {
         him,
@@ -37,6 +49,8 @@ namespace PeopleLib
         public int age;
         public genderPronoun eGender;
         public string email;
+
+        public EFavoriteFood eFavoriteFood;
 
         public string photoPath;
         public string homePageURL;
@@ -112,19 +126,17 @@ namespace PeopleLib
     {
         public double gpa;
         public collegeYear eCollegeYear;
-        public List<string> courseCodes = new List<string>();
+        //public List<string> courseCodes = new List<string>();
 
         public List<String> CourseList
         {
-            get
-            {
-                return this.courseCodes;
-            }
+            get;
+            set;
+        }
 
-            set
-            {
-                this.courseCodes = value;
-            }
+        public Student()
+        {
+            CourseList = new List<string>();
         }
 
         public static bool operator <(Student s1, Student s2)
@@ -172,19 +184,18 @@ namespace PeopleLib
     public class Teacher : Person, IPerson, ICourseList
     {
         public string specialty;
-        public List<string> courseCodes = new List<string>();
+
+        public ERating eRating;
 
         public List<String> CourseList
         {
-            get
-            {
-                return this.courseCodes;
-            }
+            get;
+            set;
+        }
 
-            set
-            {
-                this.courseCodes = value;
-            }
+        public Teacher()
+        {
+            CourseList = new List<String>();
         }
 
         public override void Work()
@@ -252,7 +263,7 @@ namespace PeopleLib
                 catch
                 {
                     // an exception will be raised if an entry with a duplicate key is added
-                    // duplicate key handling (currently ignoring any exceptions)
+                    // duplicate key handling
                 }
             }
         }
