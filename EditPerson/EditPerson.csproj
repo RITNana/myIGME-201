@@ -36,6 +36,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CourseLib">
+      <HintPath>..\CourseLib\bin\Debug\CourseLib.dll</HintPath>
+    </Reference>
     <Reference Include="PeopleAppGlobals">
       <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>

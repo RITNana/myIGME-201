@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CourseLib">
+    <Reference Include="CourseLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CourseLib\bin\Debug\CourseLib.dll</HintPath>
     </Reference>
     <Reference Include="PeopleLib">

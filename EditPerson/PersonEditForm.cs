@@ -9,21 +9,39 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PeopleLib;
 using PeopleAppGlobals;
+using CourseLib;
+
 
 namespace EditPerson
 {
     public partial class PersonEditForm : Form
     {
-
         public Person formPerson;
 
         public PersonEditForm(Person person, Form parentForm)
         {
+            /******************************************************************************************
+             **************THIS MUST BE THE FIRST FUNCTION CALL IN YOUR FORM CONSTRUCTOR **************
+             ******************************************************************************************/
             InitializeComponent();
 
-          //  foreach (Control control in this.Controls)
-          foreach(Control control in this.detailsTabPage.Controls)
+            try
             {
+                // Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; WOW64; Trident /7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; wbx1.0.0)
+                Microsoft.Win32.RegistryKey key =
+                Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\\WOW6432Node\\Microsoft\\Internet Explorer\\MAIN\\FeatureControl\\FEATURE_BROWSER_EMULATION",true);
+                key.SetValue(Application.ExecutablePath.Replace(Application.StartupPath + "\\", ""), 12001,
+                Microsoft.Win32.RegistryValueKind.DWord);
+                key.Close();
+            }
+            catch
+            {
+            }
+
+            //foreach (Control control in this.Controls)
+            foreach (Control control in this.detailsTabPage.Controls)
+            {
+                // use Tag property to indicate valid state
                 control.Tag = false;
             }
 
@@ -35,8 +53,9 @@ namespace EditPerson
 
             this.formPerson = person;
 
+
             // all form configuration should be done first
-            // before working with form's data
+            // before working with the form's data
             this.okButton.Enabled = false;
 
             this.nameText.Validating += new CancelEventHandler(TxtBoxEmpty__Validating);
@@ -46,7 +65,6 @@ namespace EditPerson
             this.gpaText.Validating += new CancelEventHandler(TxtBoxEmpty__Validating);
             this.licText.Validating += new CancelEventHandler(TxtBoxEmpty__Validating);
 
-
             this.nameText.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.emailText.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.ageText.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
@@ -54,22 +72,78 @@ namespace EditPerson
             this.gpaText.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.licText.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
 
-
-
             this.ageText.KeyPress += new KeyPressEventHandler(TxtBoxNum__KeyPress);
-            this.gpaText.KeyPress += new KeyPressEventHandler(TxtBoxNum__KeyPress);
             this.licText.KeyPress += new KeyPressEventHandler(TxtBoxNum__KeyPress);
+            this.gpaText.KeyPress += new KeyPressEventHandler(TxtBoxNum__KeyPress);
 
-            this.typeComboBox.SelectedIndexChanged += new EventHandler(TypeComboBox__SelectedIndexChnaged);
+            this.editPersonTabControl.SelectedIndexChanged += new EventHandler(EditPersonTabControl__SelectedIndexChanged);
+
+            this.typeComboBox.SelectedIndexChanged += new EventHandler(TypeComboBox__SelectedIndexChanged);
 
             this.cancelButton.Click += new EventHandler(CancelButton__Click);
             this.okButton.Click += new EventHandler(OkButton__Click);
 
-            // after all controls are configurated then we can manipulate the data
+            this.greatRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckedChanged);
+            this.okRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckedChanged);
+            this.mehRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckedChanged);
+
+            this.photoPictureBox.Click += new EventHandler(PhotoPictureBox__Click);
+
+            this.birthDateTimePicker.ValueChanged += new EventHandler(BirthDateTimePicker__ValueChanged);
+
+            this.homepageWebBrowser.ScriptErrorsSuppressed = true;
+
+            this.FormClosing += new FormClosingEventHandler(PersonEditForm__FormClosing);
+
+            this.allCoursesListView.ItemActivate += new EventHandler(AllCoursesListView__ItemActivate);
+            this.allCoursesListView.KeyDown += new KeyEventHandler(AllCoursesListView__KeyDown);
+            this.courseSearchTextBox.TextChanged += new EventHandler(CourseSearchTextBox__TextChanged);
+
+            this.homepageWebBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(HomepageWebBrowser__DocumentCompleted);
+
+
+
+
+
+            // after all contols are configured then we can manipulate the data
+
             this.nameText.Text = person.name;
             this.emailText.Text = person.email;
             this.ageText.Text = person.age.ToString();
             this.licText.Text = person.LicenseId.ToString();
+
+            if (person.name == "")
+            {
+                person.eFavoriteFood = EFavoriteFood.pizza;
+            }
+            else
+            {
+                if (person.dateOfBirth > this.birthDateTimePicker.MinDate)
+                {
+                    this.birthDateTimePicker.Value = person.dateOfBirth;
+                }
+
+                this.homepageTextBox.Text = person.homePageURL;
+            }
+
+            this.birthDateTimePicker.Value = this.birthDateTimePicker.MinDate;
+
+            switch (person.eFavoriteFood)
+            {
+                case EFavoriteFood.brocolli:
+                    this.brocolliRadioButton.Checked = true;
+                    break;
+
+                case EFavoriteFood.pizza:
+                    this.pizzaRadioButton.Checked = true;
+                    break;
+
+                case EFavoriteFood.apples:
+                    this.applesRadioButton.Checked = true;
+                    break;
+            }
+
+            this.photoPictureBox.ImageLocation = person.photoPath;
 
 
             if (person.GetType() == typeof(Student))
@@ -78,20 +152,381 @@ namespace EditPerson
 
                 Student student = (Student)person;
                 this.gpaText.Text = student.gpa.ToString();
-            } else
+            }
+            else
             {
                 this.typeComboBox.SelectedIndex = 1;
 
                 Teacher teacher = (Teacher)person;
-                this.specText.Text = teacher.specialty.ToString();
+                this.specText.Text = teacher.specialty;
+
+                if (person.name == "")
+                {
+                    teacher.eRating = ERating.ok;
+                }
+
+                switch (teacher.eRating)
+                {
+                    case ERating.great:
+                        this.greatRadioButton.Checked = true;
+                        break;
+                    case ERating.ok:
+                        this.okRadioButton.Checked = true;
+                        break;
+                    case ERating.meh:
+                        this.mehRadioButton.Checked = true;
+                        break;
+                }
             }
 
 
             this.Show();
         }
 
+        private void HomepageWebBrowser__DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            WebBrowser wb = (WebBrowser)sender;
 
-        private void OkButton__Click(Object sender, EventArgs e)
+            if (wb.Document.Title == "DOM-3")
+            {
+                HtmlElement htmlElement;
+                HtmlElementCollection htmlElementCollection;
+
+                htmlElement = wb.Document.Body;
+                htmlElement.Style += "font-family: sans-serif; color: #a000a0";
+
+                htmlElementCollection = wb.Document.GetElementsByTagName("h1");
+                htmlElement = htmlElementCollection[0];
+
+                htmlElement.InnerText = "My Kitten Page";
+                htmlElement.MouseOver += new HtmlElementEventHandler(Example_H1__MouseOver);
+
+                htmlElementCollection = wb.Document.GetElementsByTagName("h2");
+                htmlElementCollection[0].InnerText = "Meow";
+                htmlElementCollection[1].InnerHtml = "<a href = 'http://www.kittens.com'>Kitties!</a>";
+                htmlElementCollection[1].InnerText = "";
+
+                htmlElement = wb.Document.GetElementById("lastParagraph");
+
+                HtmlElement htmlElement1 = wb.Document.CreateElement("img");
+                htmlElement1.SetAttribute("src", "https://en.bcdn.biz/Images/2018/6/12/2765ee3-ffc0-4a4d-af63-ce8731b65f26.jpg");
+                htmlElement1.SetAttribute("title", "awww");
+                htmlElement1.Click += new HtmlElementEventHandler(Example_IMG__Click);
+
+                htmlElement.InsertAdjacentElement(HtmlElementInsertionOrientation.AfterBegin, htmlElement1);
+
+                htmlElement1 = wb.Document.CreateElement("footer");
+
+                htmlElement1.InnerHtml = "&copy;2023 <a href = 'https://www.nerdtherapy.org'>D. Schuh</a>";
+
+                wb.Document.Body.AppendChild(htmlElement1); 
+            }
+        }
+
+        private void Example_IMG__Click(object sender, EventArgs e)
+        {
+            this.homepageWebBrowser.Navigate("https://m.youtube.com/watch?v=oHg5SJYRHA0");
+        }
+
+        private void Example_H1__MouseOver(object sender, HtmlElementEventArgs e)
+        {
+            HtmlElement htmlElement = (HtmlElement)sender;
+            HtmlElementCollection htmlElementCollection;
+
+            if (htmlElement.InnerText.ToLower().Contains("kitten"))
+            {
+                htmlElement.InnerText = "My Puppy Page";
+
+                htmlElementCollection = this.homepageWebBrowser.Document.GetElementsByTagName("h2");
+                htmlElementCollection[0].InnerText = "Woof!";
+                htmlElementCollection[1].InnerHtml = "<a href = 'https://www.puppies.com'>Puppies!</a>";
+
+                htmlElementCollection = this.homepageWebBrowser.Document.GetElementsByTagName("img");
+                htmlElementCollection[0].SetAttribute("src", "https://www.allthingsdogs.com/wp-content/uploads/2019/05/Cute-Puppy-Names.jpg");
+            }
+            else
+            {
+                htmlElement.InnerText = "My Kitten Page";
+
+                htmlElementCollection = this.homepageWebBrowser.Document.GetElementsByTagName("h2");
+                htmlElementCollection[0].InnerText = "Meow!";
+                htmlElementCollection[1].InnerHtml = "<a href='http://www.kittens.com'>Kitties!</a>";
+
+                htmlElementCollection = this.homepageWebBrowser.Document.GetElementsByTagName("img");
+                htmlElementCollection[0].SetAttribute("src", "https://en.bcdn.biz/Images/2018/6/12/27565ee3-ffc0-4a4d-af63-ce8731b65f26.jpg");
+            }
+        }
+
+
+        private void CourseSearchTextBox__TextChanged(object sender, EventArgs e)
+        {
+            PaintListView(allCoursesListView);
+        }
+
+        private void AllCoursesListView__KeyDown(object sender, KeyEventArgs e)
+        {
+            Course course;
+            ListView lv = (ListView)sender;
+
+            string courseCode = null;
+
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                courseCode = lv.SelectedItems[0].Text.ToString();
+
+                course = Globals.courses[courseCode];
+
+                ICourseList ICourseList = (ICourseList)formPerson;
+
+                if (course != null)
+                {
+                    if (ICourseList.CourseList.Contains(course.courseCode))
+                    {
+                        ICourseList.CourseList.Remove(course.courseCode);
+                    }
+                    else
+                    {
+                        ICourseList.CourseList.Add(course.courseCode);
+                    }
+                }
+                PaintListView(this.selectedCoursesListView);
+            }
+        }
+
+
+
+        private void AllCoursesListView__ItemActivate(object sender, EventArgs e)
+        {
+            Course course;
+            ListView lv = (ListView)sender;
+
+            string courseCode = null;
+
+            courseCode = lv.SelectedItems[0].Text.ToString();
+
+            course = Globals.courses[courseCode];
+
+            ICourseList ICourseList = (ICourseList)formPerson;
+
+            if (course != null)
+            {
+                if (ICourseList.CourseList.Contains(course.courseCode))
+                {
+                    ICourseList.CourseList.Remove(course.courseCode);
+                }
+                else
+                {
+                    ICourseList.CourseList.Add(course.courseCode);
+                }
+            }
+            PaintListView(this.selectedCoursesListView);
+        }
+
+        private void PaintListView(ListView lv)
+        {
+            ListViewItem lvi = null;
+            ListViewItem.ListViewSubItem lvsi = null;
+
+
+            // 12. clear the listview items
+            lv.Items.Clear();
+
+            // 13. lock the listview to begin updating it
+            lv.BeginUpdate();
+
+            int lviCntr = 0;
+
+            // 14. loop through all courses in Globals.courses.sortedList and insert them in the ListView
+            foreach (KeyValuePair<string, Course> keyValuePair in Globals.courses.sortedList)
+            {
+                Course thisCourse = null;
+
+                // 15. set thisCourse to the Value in the current keyValuePair
+                thisCourse = keyValuePair.Value;
+
+                if (lv == selectedCoursesListView)
+                {
+                    ICourseList iCourseList = (ICourseList)formPerson;
+
+                    if (!iCourseList.CourseList.Contains(thisCourse.courseCode))
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (courseSearchTextBox.TextLength > 0)
+                    {
+                        if (!thisCourse.courseCode.Contains(courseSearchTextBox.Text) &&
+                            !thisCourse.description.Contains(courseSearchTextBox.Text))
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+
+                // 16. create a new ListViewItem named lvi
+                lvi = new ListViewItem();
+
+                // 17. set the first column of this row to show thisCourse.courseCode
+                lvi.Text = thisCourse.courseCode;
+
+                // 18. set the Tag property for this ListViewItem to the courseCode
+                lvi.Tag = thisCourse.courseCode;
+
+                // alternate row color
+                if (lviCntr % 2 == 0)
+                {
+                    lvi.BackColor = Color.LightBlue;
+                }
+                else
+                {
+                    lvi.BackColor = Color.Beige;
+                }
+
+
+                // 19. create a new ListViewItem.ListViewSubItem named lvsi for the next column
+                lvsi = new ListViewItem.ListViewSubItem();
+
+                // 20. set the column to show thisCourse.description
+                lvsi.Text = thisCourse.description;
+
+                // 21. add lvsi to lvi.SubItems
+                lvi.SubItems.Add(lvsi);
+
+
+                // 22. create a new ListViewItem.ListViewSubItem named lvsi for the next column
+                lvsi = new ListViewItem.ListViewSubItem();
+
+                // 23. set the column to show thisCourse.teacherEmail
+                lvsi.Text = thisCourse.teacherEmail;
+
+                // 24. add lvsi to lvi.SubItems
+                lvi.SubItems.Add(lvsi);
+
+
+                // 25. create a new ListViewItem.ListViewSubItem named lvsi for the next column
+                lvsi = new ListViewItem.ListViewSubItem();
+
+                // 26. set the column to show thisCourse.schedule.DaysOfWeek()
+                // note that thisCourse.schedule.DaysOfWeek() returns the string that we want to display
+                lvsi.Text = thisCourse.schedule.DaysOfWeek();
+
+                // 27. add lvsi to lvi.SubItems
+                lvi.SubItems.Add(lvsi);
+
+
+                // 28. create a new ListViewItem.ListViewSubItem named lvsi for the next column
+                lvsi = new ListViewItem.ListViewSubItem();
+
+                // 29. set the column to show thisCourse.schedule.GetTimes()
+                // note that thisCourse.schedule.GetTimes() returns the string that we want to display
+                lvsi.Text = thisCourse.schedule.GetTimes();
+
+                // 30. add lvsi to lvi.SubItems
+                lvi.SubItems.Add(lvsi);
+
+                // 35. lvi is all filled in for all columns for this row so add it to courseListView.Items
+                lv.Items.Add(lvi);
+
+                // 36. increment our counter to alternate colors and check for nStartEl
+                ++lviCntr;
+            }
+
+
+            // 37. unlock the ListView since we are done updating the contents
+            lv.EndUpdate();
+        }
+
+
+
+        private void PersonEditForm__FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                this.Owner.Enabled = true;
+            }
+        }
+
+        private void EditPersonTabControl__SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabControl tc = (TabControl)sender;
+
+            if (tc.SelectedTab == this.detailsTabPage)
+            {
+                this.AcceptButton = this.okButton;
+                this.CancelButton = this.cancelButton;
+            }
+            else if (tc.SelectedTab == this.homePageTabPage)
+            {
+                this.AcceptButton = null;
+                this.CancelButton = null;
+
+                this.homepageWebBrowser.Navigate(this.homepageTextBox.Text);
+            }
+            else if (tc.SelectedTab == this.coursesTabPage)
+            {
+                this.AcceptButton = null;
+                this.CancelButton = null;
+
+                PaintListView(this.allCoursesListView);
+                PaintListView(this.selectedCoursesListView);
+            }
+
+        }
+
+        private void BirthDateTimePicker__ValueChanged(object sender, EventArgs e)
+        {
+            DateTimePicker dtp = (DateTimePicker)sender;
+
+            if (dtp.Value == dtp.MinDate)
+            {
+                dtp.CustomFormat = " ";
+            }
+            else
+            {
+                dtp.CustomFormat = "MMM d, yyy";
+            }
+        }
+
+        private void PhotoPictureBox__Click(object sender, EventArgs e)
+        {
+            PictureBox pb = (PictureBox)sender;
+
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                pb.ImageLocation = this.openFileDialog.FileName;
+            }
+        }
+
+        private void RatingRadioButton__CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+
+            if (rb.Checked)
+            {
+                if (rb == this.greatRadioButton)
+                {
+                    this.ratingLabel.Text = "sign me up";
+                }
+
+                if (rb == this.okRadioButton)
+                {
+                    this.ratingLabel.Text = "ok";
+                }
+
+                if (rb == this.mehRadioButton)
+                {
+                    this.ratingLabel.Text = "run away!";
+                }
+            }
+        }
+
+        private void OkButton__Click(object sender, EventArgs e)
         {
             Student student = null;
             Teacher teacher = null;
@@ -99,7 +534,7 @@ namespace EditPerson
 
             Globals.people.Remove(this.formPerson.email);
 
-            if(this.typeComboBox.SelectedIndex == 0)
+            if (this.typeComboBox.SelectedIndex == 0)
             {
                 student = new Student();
                 person = student;
@@ -114,19 +549,49 @@ namespace EditPerson
             person.email = this.emailText.Text;
             person.age = Convert.ToInt32(this.ageText.Text);
             person.LicenseId = Convert.ToInt32(this.licText.Text);
+            person.dateOfBirth = this.birthDateTimePicker.Value;
+            person.homePageURL = this.homePageTabPage.Text;
 
-            if(person.GetType() == typeof(Student))
+            if (this.brocolliRadioButton.Checked)
+            {
+                person.eFavoriteFood = EFavoriteFood.brocolli;
+            }
+            else if (this.pizzaRadioButton.Checked)
+            {
+                person.eFavoriteFood = EFavoriteFood.pizza;
+            }
+            else if (this.applesRadioButton.Checked)
+            {
+                person.eFavoriteFood = EFavoriteFood.apples;
+            }
+
+            person.photoPath = this.photoPictureBox.ImageLocation;
+
+            if (person.GetType() == typeof(Student))
             {
                 student.gpa = Convert.ToDouble(this.gpaText.Text);
             }
             else
             {
                 teacher.specialty = this.specText.Text;
+
+                if (this.greatRadioButton.Checked)
+                {
+                    teacher.eRating = ERating.great;
+                }
+                else if (this.okRadioButton.Checked)
+                {
+                    teacher.eRating = ERating.ok;
+                }
+                else if (this.mehRadioButton.Checked)
+                {
+                    teacher.eRating = ERating.meh;
+                }
             }
 
             Globals.people[person.email] = person;
 
-            if(this.Owner != null)
+            if (this.Owner != null)
             {
                 this.Owner.Enabled = true;
                 this.Owner.Focus();
@@ -139,10 +604,9 @@ namespace EditPerson
             this.Dispose();
         }
 
-
-        private void CancelButton__Click(Object sender,  EventArgs e)
+        private void CancelButton__Click(object sender, EventArgs e)
         {
-            if(this.Owner != null)
+            if (this.Owner != null)
             {
                 this.Owner.Enabled = true;
                 this.Owner.Focus();
@@ -153,10 +617,10 @@ namespace EditPerson
         }
 
 
-
-        private void TypeComboBox__SelectedIndexChnaged(Object sender, EventArgs e)
+        private void TypeComboBox__SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = (ComboBox)sender;
+
             if (cb.SelectedIndex == 0)
             {
                 this.specialtyLabel.Visible = false;
@@ -168,7 +632,10 @@ namespace EditPerson
                 this.gpaText.Visible = true;
 
                 this.gpaText.Tag = (this.gpaText.Text.Length > 0);
-            } else
+
+                this.ratingGroupBox.Visible = false;
+            }
+            else
             {
                 this.specialtyLabel.Visible = true;
                 this.specText.Visible = true;
@@ -178,23 +645,28 @@ namespace EditPerson
                 this.gpaLabel.Visible = false;
                 this.gpaText.Visible = false;
 
-                this.specText.Tag = (this.gpaText.Text.Length > 0);
+                this.specText.Tag = (this.specText.Text.Length > 0);
+
+                this.ratingGroupBox.Visible = true;
+
+                if (!this.greatRadioButton.Checked && !this.okRadioButton.Checked && !this.mehRadioButton.Checked)
+                {
+                    this.okRadioButton.Checked = true;
+                }
             }
 
             ValidateAll();
         }
 
-
-
-
-        private void TxtBoxEmpty__TextChanged(Object sender, EventArgs e)
+        private void TxtBoxEmpty__TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (tb.Text.Length == 0)
             {
                 this.errorProvider.SetError(tb, "This field cannot be empty");
                 tb.Tag = false;
-            } else
+            }
+            else
             {
                 this.errorProvider.SetError(tb, null);
                 tb.Tag = true;
@@ -203,12 +675,10 @@ namespace EditPerson
             ValidateAll();
         }
 
-
-
-
         private void TxtBoxNum__KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox tb = (TextBox)sender;
+
             if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
             {
                 e.Handled = false;
@@ -216,11 +686,11 @@ namespace EditPerson
             }
             else
             {
-                e.Handled |= true;
+                e.Handled = true;
 
-                if(tb == this.gpaText)
+                if (tb == this.gpaText)
                 {
-                    if(e.KeyChar == '.' && tb.Text.Contains("."))
+                    if (e.KeyChar == '.' && !tb.Text.Contains("."))
                     {
                         e.Handled = false;
                         tb.Tag = true;
@@ -231,19 +701,20 @@ namespace EditPerson
             ValidateAll();
         }
 
+
         public void TxtBoxEmpty__Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = (TextBox)sender;
 
             if (tb.Text.Length == 0)
             {
-                this.errorProvider.SetError(tb, "This field cannot be empty");
+                this.errorProvider.SetError(tb, "This field cannot be empty.");
                 e.Cancel = true;
                 tb.Tag = false;
             }
             else
             {
-                this.errorProvider.SetError(tb, "This field cannot be empty");
+                this.errorProvider.SetError(tb, null);
                 e.Cancel = false;
                 tb.Tag = true;
             }
@@ -262,12 +733,17 @@ namespace EditPerson
         }
 
 
-        private void okButton__Clicked(object sender, EventArgs e)
+        public void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void PersonEditForm_Load(object sender, EventArgs e)
+        private void allCoursesListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
 
         }

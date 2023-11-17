@@ -25,7 +25,6 @@ namespace PeopleList
         {
             InitializeComponent();
 
-            Globals.AddPeopleSampleData();
 
             // 1. use the PeopleListView__KeyDown delegate
             this.peopleListView.KeyDown += new KeyEventHandler(PeopleListView__KeyDown);

@@ -28,16 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            "David Schuh",
+            "dxsigm@rit.edu",
+            "29",
+            "123456",
+            "Basket weaving"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("");
+            this.exitButton = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.peopleListView = new System.Windows.Forms.ListView();
             this.nameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.emailHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ageHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.licHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gpa_specHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.exitButton = new System.Windows.Forms.Button();
-            this.removeButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // exitButton
+            // 
+            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.exitButton.Location = new System.Drawing.Point(829, 406);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(100, 37);
+            this.exitButton.TabIndex = 9;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            // 
+            // removeButton
+            // 
+            this.removeButton.Location = new System.Drawing.Point(565, 406);
+            this.removeButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(100, 37);
+            this.removeButton.TabIndex = 8;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = true;
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(259, 406);
+            this.addButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(100, 37);
+            this.addButton.TabIndex = 7;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
             // 
             // peopleListView
             // 
@@ -50,12 +96,23 @@
             this.peopleListView.FullRowSelect = true;
             this.peopleListView.GridLines = true;
             this.peopleListView.HideSelection = false;
-            this.peopleListView.Location = new System.Drawing.Point(11, 11);
-            this.peopleListView.Margin = new System.Windows.Forms.Padding(2);
+            this.peopleListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
+            this.peopleListView.Location = new System.Drawing.Point(25, 20);
+            this.peopleListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.peopleListView.MultiSelect = false;
             this.peopleListView.Name = "peopleListView";
-            this.peopleListView.Size = new System.Drawing.Size(788, 301);
-            this.peopleListView.TabIndex = 2;
+            this.peopleListView.Size = new System.Drawing.Size(1049, 370);
+            this.peopleListView.TabIndex = 10;
             this.peopleListView.UseCompatibleStateImageBehavior = false;
             this.peopleListView.View = System.Windows.Forms.View.Details;
             // 
@@ -83,63 +140,31 @@
             this.gpa_specHeader.Text = "GPA/Specialty";
             this.gpa_specHeader.Width = 440;
             // 
-            // exitButton
+            // PeopleListForm
             // 
-            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.Location = new System.Drawing.Point(622, 330);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 30);
-            this.exitButton.TabIndex = 9;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            // 
-            // removeButton
-            // 
-            this.removeButton.Location = new System.Drawing.Point(424, 330);
-            this.removeButton.Margin = new System.Windows.Forms.Padding(4);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(75, 30);
-            this.removeButton.TabIndex = 8;
-            this.removeButton.Text = "Remove";
-            this.removeButton.UseVisualStyleBackColor = true;
-            // 
-            // addButton
-            // 
-            this.addButton.Location = new System.Drawing.Point(194, 330);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 30);
-            this.addButton.TabIndex = 7;
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
-            // 
-            // PeopleList
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 383);
+            this.ClientSize = new System.Drawing.Size(1095, 471);
+            this.Controls.Add(this.peopleListView);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.peopleListView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "PeopleList";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "PeopleListForm";
             this.Text = "PeopleList";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.ListView peopleListView;
         private System.Windows.Forms.ColumnHeader nameHeader;
         private System.Windows.Forms.ColumnHeader emailHeader;
         private System.Windows.Forms.ColumnHeader ageHeader;
         private System.Windows.Forms.ColumnHeader licHeader;
         private System.Windows.Forms.ColumnHeader gpa_specHeader;
-        private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Button removeButton;
-        private System.Windows.Forms.Button addButton;
     }
 }
