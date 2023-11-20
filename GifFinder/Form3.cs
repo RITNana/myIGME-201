@@ -24,7 +24,7 @@ namespace GifFinder
 
             this.MdiParent = parent;
             this.Text = title;
-            this.title = title;
+             this.title = title;
 
             parent.closeAllToolStripMenuItem.Click += new EventHandler(CloseAllToolStripMenuItem__Click);
             parent.saveToolStripMenuItem.Click += new EventHandler(SaveToolStripMenuItem__Click);

@@ -20,8 +20,8 @@ namespace GifFinder
         {
             InitializeComponent();
 
-            this.okButton.Click += new EventHandler(okButton__Click);
-            this.cancelButton.Click += new EventHandler(cancelButton__Click);
+            this.okButton.Click += new EventHandler(OkButton__Click);
+            this.cancelButton.Click += new EventHandler(CancelButton__Click);
             this.maxItemsTextBox.KeyPress += new KeyPressEventHandler(MaxItemsTextBox__KeyPress);
 
         }
@@ -36,15 +36,15 @@ namespace GifFinder
             }
         }
 
-        private void okButton__Click(object sender, EventArgs e)
+        private void OkButton__Click(object sender, EventArgs e)
         {
             this.response = "OK";
             this.searchTerm = searchTermTextBox.Text;
-            maxItems = Convert.ToInt32(maxItemsTextBox.Text);
+            this.maxItems = Convert.ToInt32(maxItemsTextBox.Text);
             this.Hide();
         }
 
-        private void cancelButton__Click(object sender, EventArgs e)
+        private void CancelButton__Click(object sender, EventArgs e)
         {
             this.response = "Cancel";
             this.Hide();
