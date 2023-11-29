@@ -36,7 +36,8 @@
     <Reference Include="PeopleAppGlobals">
       <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>
-    <Reference Include="PeopleList">
+    <Reference Include="PeopleList, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PeopleList\bin\Debug\PeopleList.dll</HintPath>
     </Reference>
     <Reference Include="System" />

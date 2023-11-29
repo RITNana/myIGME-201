@@ -52,7 +52,7 @@ namespace PeopleAppGlobals
                     person = teacher;
                 }
 
-                person.eGender = (genderPronoun)rand.Next(0, 3);
+                person.eGender = (EGenderPronoun)rand.Next(0, 3);
 
                 person.age = rand.Next(0, 81);
                 person.LicenseId = rand.Next(0, 999999);

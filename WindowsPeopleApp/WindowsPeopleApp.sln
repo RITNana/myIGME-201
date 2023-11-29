@@ -14,6 +14,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditPerson", "..\EditPerson\EditPerson.csproj", "{F2DF070D-0A8D-4ABC-BE11-016161C60E0D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{27C66FB4-DA11-43C4-B205-18729EAF3CD0} = {27C66FB4-DA11-43C4-B205-18729EAF3CD0}
+		{D20E2663-8D03-4450-BC72-064B39CFEB65} = {D20E2663-8D03-4450-BC72-064B39CFEB65}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleAppGlobals", "..\PeopleAppGlobals\PeopleAppGlobals.csproj", "{F79B707B-7357-4E1F-AECA-ED90C2D6EF7E}"

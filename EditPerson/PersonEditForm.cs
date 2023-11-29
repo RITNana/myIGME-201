@@ -8,9 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PeopleLib;
-using PeopleAppGlobals;
 using CourseLib;
-
+using PeopleAppGlobals;
 
 namespace EditPerson
 {
@@ -27,15 +26,16 @@ namespace EditPerson
 
             try
             {
-                // Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; WOW64; Trident /7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; wbx1.0.0)
-                Microsoft.Win32.RegistryKey key =
-                Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\\WOW6432Node\\Microsoft\\Internet Explorer\\MAIN\\FeatureControl\\FEATURE_BROWSER_EMULATION",true);
-                key.SetValue(Application.ExecutablePath.Replace(Application.StartupPath + "\\", ""), 12001,
-                Microsoft.Win32.RegistryValueKind.DWord);
+                // Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; WOW64; Trident / 7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; wbx 1.0.0)
+                Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+                    @"SOFTWARE\\WOW6432Node\\Microsoft\\Internet Explorer\\MAIN\\FeatureControl\\FEATURE_BROWSER_EMULATION",
+                    true);
+                key.SetValue(Application.ExecutablePath.Replace(Application.StartupPath + "\\", ""), 12001, Microsoft.Win32.RegistryValueKind.DWord);
                 key.Close();
             }
             catch
             {
+
             }
 
             //foreach (Control control in this.Controls)
@@ -83,9 +83,11 @@ namespace EditPerson
             this.cancelButton.Click += new EventHandler(CancelButton__Click);
             this.okButton.Click += new EventHandler(OkButton__Click);
 
-            this.greatRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckedChanged);
-            this.okRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckedChanged);
-            this.mehRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckedChanged);
+            // add the event handler to the class radio buttons
+            this.froshRadioButton.CheckedChanged += new EventHandler(this.ClassRadioButton__CheckedChanged);
+            this.sophRadioButton.CheckedChanged += new EventHandler(this.ClassRadioButton__CheckedChanged);
+            this.juniorRadioButton.CheckedChanged += new EventHandler(this.ClassRadioButton__CheckedChanged);
+            this.seniorRadioButton.CheckedChanged += new EventHandler(this.ClassRadioButton__CheckedChanged);
 
             this.photoPictureBox.Click += new EventHandler(PhotoPictureBox__Click);
 
@@ -100,24 +102,48 @@ namespace EditPerson
             this.courseSearchTextBox.TextChanged += new EventHandler(CourseSearchTextBox__TextChanged);
 
             this.homepageWebBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(HomepageWebBrowser__DocumentCompleted);
+            this.scheduleWebBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(ScheduleWebBrowser__DocumentCompleted);
 
-
-
+            this.editToolStripMenuItem.Click += new EventHandler(EditToolStripMenuItem__Click);
+            this.removeToolStripMenuItem.Click += new EventHandler(RemoveToolStripMenuItem__Click);
 
 
             // after all contols are configured then we can manipulate the data
+
+            this.homepageTextBox.Text = "people.rit.edu/dxsigm/example.html";
 
             this.nameText.Text = person.name;
             this.emailText.Text = person.email;
             this.ageText.Text = person.age.ToString();
             this.licText.Text = person.LicenseId.ToString();
 
+            this.birthDateTimePicker.Value = this.birthDateTimePicker.MinDate;
+
+            // RadioButtons should always default to one of them being checked
+            this.seniorRadioButton.Checked = true;
+
             if (person.name == "")
             {
-                person.eFavoriteFood = EFavoriteFood.pizza;
+                // default the Them
+                this.themRadioButton.Checked = true;
             }
             else
             {
+                switch (person.eGender)
+                {
+                    case EGenderPronoun.her:
+                        this.herRadioButton.Checked = true;
+                        break;
+
+                    case EGenderPronoun.him:
+                        this.himRadioButton.Checked = true;
+                        break;
+
+                    case EGenderPronoun.them:
+                        this.themRadioButton.Checked = true;
+                        break;
+                }
+
                 if (person.dateOfBirth > this.birthDateTimePicker.MinDate)
                 {
                     this.birthDateTimePicker.Value = person.dateOfBirth;
@@ -126,32 +152,43 @@ namespace EditPerson
                 this.homepageTextBox.Text = person.homePageURL;
             }
 
-            this.birthDateTimePicker.Value = this.birthDateTimePicker.MinDate;
-
-            switch (person.eFavoriteFood)
-            {
-                case EFavoriteFood.brocolli:
-                    this.brocolliRadioButton.Checked = true;
-                    break;
-
-                case EFavoriteFood.pizza:
-                    this.pizzaRadioButton.Checked = true;
-                    break;
-
-                case EFavoriteFood.apples:
-                    this.applesRadioButton.Checked = true;
-                    break;
-            }
-
             this.photoPictureBox.ImageLocation = person.photoPath;
 
-
-            if (person.GetType() == typeof(Student))
+            if (person is Student student)
+            //if( person.GetType() == typeof(Student) )
             {
-                this.typeComboBox.SelectedIndex = 0;
+                //Student student = (Student)person;
 
-                Student student = (Student)person;
+                this.typeComboBox.SelectedIndex = 0;
                 this.gpaText.Text = student.gpa.ToString();
+
+                if (student.name == null)
+                {
+                    // default class year to senior
+                    this.seniorRadioButton.Checked = true;
+                }
+                else
+                {
+                    switch (student.eCollegeYear)
+                    {
+                        case ECollegeYear.freshman:
+                            this.froshRadioButton.Checked = true;
+                            break;
+
+                        case ECollegeYear.sophomore:
+                            this.sophRadioButton.Checked = true;
+                            break;
+
+                        case ECollegeYear.junior:
+                            this.juniorRadioButton.Checked = true;
+                            break;
+
+                        case ECollegeYear.senior:
+                        default:
+                            this.seniorRadioButton.Checked = true;
+                            break;
+                    }
+                }
             }
             else
             {
@@ -159,28 +196,104 @@ namespace EditPerson
 
                 Teacher teacher = (Teacher)person;
                 this.specText.Text = teacher.specialty;
-
-                if (person.name == "")
-                {
-                    teacher.eRating = ERating.ok;
-                }
-
-                switch (teacher.eRating)
-                {
-                    case ERating.great:
-                        this.greatRadioButton.Checked = true;
-                        break;
-                    case ERating.ok:
-                        this.okRadioButton.Checked = true;
-                        break;
-                    case ERating.meh:
-                        this.mehRadioButton.Checked = true;
-                        break;
-                }
             }
 
-
             this.Show();
+        }
+
+        private void ScheduleWebBrowser__DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            WebBrowser webBrowser = (WebBrowser)sender;
+            HtmlElement htmlElement;
+            Course course;
+
+            string htmlId = null;
+
+            ICourseList iCourseList = (ICourseList)formPerson;
+
+            foreach (string courseCode in iCourseList.CourseList)
+            {
+                course = Globals.courses[courseCode];
+
+                foreach (DayOfWeek dayOfWeek in course.schedule.daysOfWeek)
+                {
+                    switch (dayOfWeek)
+                    {
+                        case DayOfWeek.Sunday:
+                        case DayOfWeek.Monday:
+                        case DayOfWeek.Tuesday:
+                        case DayOfWeek.Wednesday:
+                        case DayOfWeek.Friday:
+                            htmlId = (dayOfWeek.ToString())[0].ToString();
+                            break;
+
+                        case DayOfWeek.Thursday:
+                            htmlId = "R";
+                            break;
+
+                        case DayOfWeek.Saturday:
+                            htmlId = "A";
+                            break;
+                    }
+
+                    htmlId += $"{course.schedule.startTime:HH}";
+
+                    htmlElement = webBrowser.Document.GetElementById(htmlId);
+
+                    if (htmlElement != null)
+                    {
+                        htmlElement.InnerText = course.courseCode;
+                        htmlElement.Style += "background-color:red;";
+
+                        htmlElement.MouseDown += new HtmlElementEventHandler(SchHtmlElement__MouseDown);
+                        // htmlElement.SetAttribute("title", $"Description: {course.description}\nReview: {course.review}");
+                        htmlElement.MouseOver += new HtmlElementEventHandler(SchHtmlElement__MouseOver);
+                    }
+                }
+            }
+        }
+
+
+        private void SchHtmlElement__MouseOver(object sender, HtmlElementEventArgs e)
+        {
+            HtmlElement htmlElement = sender as HtmlElement;
+            Course course;
+
+            course = Globals.courses[htmlElement.InnerText];
+            if (course != null)
+            {
+                this.schToolTip.Show($"Description: {course.description}\nReview: {course.review}", this.scheduleWebBrowser, e.MousePosition.X + 5, e.MousePosition.Y + 15, 1500);
+            }
+        }
+
+        private void SchHtmlElement__MouseDown(object sender, HtmlElementEventArgs e)
+        {
+            HtmlElement htmlElement = (HtmlElement)sender;
+
+            if (e.MouseButtonsPressed == MouseButtons.Left)
+            {
+                this.schContextMenuStrip.Tag = htmlElement;
+                this.schContextMenuStrip.Show(this.scheduleWebBrowser, e.MousePosition.X + 5, e.MousePosition.Y + 15);
+            }
+        }
+
+        private void EditToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+            HtmlElement htmlElement = (HtmlElement)this.schContextMenuStrip.Tag;
+
+            EditCourseForm editCourseForm = new EditCourseForm(htmlElement.InnerText);
+            editCourseForm.Show();
+        }
+
+
+        private void RemoveToolStripMenuItem__Click(Object sender, EventArgs e)
+        {
+            HtmlElement htmlElement = (HtmlElement)this.schContextMenuStrip.Tag;
+
+            htmlElement.InnerText = "";
+            htmlElement.Style += "background-color:green;";
+            htmlElement.MouseDown -= SchHtmlElement__MouseDown;
+            htmlElement.MouseOver -= SchHtmlElement__MouseOver;
         }
 
         private void HomepageWebBrowser__DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -193,7 +306,7 @@ namespace EditPerson
                 HtmlElementCollection htmlElementCollection;
 
                 htmlElement = wb.Document.Body;
-                htmlElement.Style += "font-family: sans-serif; color: #a000a0";
+                htmlElement.Style += "font-family: sans-serif; color: #a000a0;";
 
                 htmlElementCollection = wb.Document.GetElementsByTagName("h1");
                 htmlElement = htmlElementCollection[0];
@@ -202,30 +315,32 @@ namespace EditPerson
                 htmlElement.MouseOver += new HtmlElementEventHandler(Example_H1__MouseOver);
 
                 htmlElementCollection = wb.Document.GetElementsByTagName("h2");
-                htmlElementCollection[0].InnerText = "Meow";
-                htmlElementCollection[1].InnerHtml = "<a href = 'http://www.kittens.com'>Kitties!</a>";
+                htmlElementCollection[0].InnerText = "Meow!";
+                htmlElementCollection[1].InnerHtml = "<a href='http://www.kittens.com'>Kitties!</a>";
                 htmlElementCollection[1].InnerText = "";
 
                 htmlElement = wb.Document.GetElementById("lastParagraph");
+                htmlElement.SetAttribute("title", "this is the paragraph tooltip");
 
                 HtmlElement htmlElement1 = wb.Document.CreateElement("img");
-                htmlElement1.SetAttribute("src", "https://en.bcdn.biz/Images/2018/6/12/2765ee3-ffc0-4a4d-af63-ce8731b65f26.jpg");
-                htmlElement1.SetAttribute("title", "awww");
+                htmlElement1.SetAttribute("src", "https://en.bcdn.biz/Images/2018/6/12/27565ee3-ffc0-4a4d-af63-ce8731b65f26.jpg");
+                htmlElement1.SetAttribute("title", "awwww");
                 htmlElement1.Click += new HtmlElementEventHandler(Example_IMG__Click);
 
                 htmlElement.InsertAdjacentElement(HtmlElementInsertionOrientation.AfterBegin, htmlElement1);
 
                 htmlElement1 = wb.Document.CreateElement("footer");
 
-                htmlElement1.InnerHtml = "&copy;2023 <a href = 'https://www.nerdtherapy.org'>D. Schuh</a>";
+                htmlElement1.InnerHtml = "&copy;2023 <a href='http://www.nerdtherapy.org'>D. Schuh</a>";
 
-                wb.Document.Body.AppendChild(htmlElement1); 
+                wb.Document.Body.AppendChild(htmlElement1);
+
             }
         }
 
         private void Example_IMG__Click(object sender, EventArgs e)
         {
-            this.homepageWebBrowser.Navigate("https://m.youtube.com/watch?v=oHg5SJYRHA0");
+            this.homepageWebBrowser.Navigate("http://m.youtube.com/watch?v=oHg5SJYRHA0");
         }
 
         private void Example_H1__MouseOver(object sender, HtmlElementEventArgs e)
@@ -239,7 +354,7 @@ namespace EditPerson
 
                 htmlElementCollection = this.homepageWebBrowser.Document.GetElementsByTagName("h2");
                 htmlElementCollection[0].InnerText = "Woof!";
-                htmlElementCollection[1].InnerHtml = "<a href = 'https://www.puppies.com'>Puppies!</a>";
+                htmlElementCollection[1].InnerHtml = "<a href='http://www.puppies.com'>Puppies!</a>";
 
                 htmlElementCollection = this.homepageWebBrowser.Document.GetElementsByTagName("img");
                 htmlElementCollection[0].SetAttribute("src", "https://www.allthingsdogs.com/wp-content/uploads/2019/05/Cute-Puppy-Names.jpg");
@@ -257,7 +372,6 @@ namespace EditPerson
             }
         }
 
-
         private void CourseSearchTextBox__TextChanged(object sender, EventArgs e)
         {
             PaintListView(allCoursesListView);
@@ -270,32 +384,31 @@ namespace EditPerson
 
             string courseCode = null;
 
-
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
 
-                courseCode = lv.SelectedItems[0].Text.ToString();
+                courseCode = lv.SelectedItems[0].Tag.ToString();
 
                 course = Globals.courses[courseCode];
 
-                ICourseList ICourseList = (ICourseList)formPerson;
+                ICourseList iCourseList = (ICourseList)formPerson;
 
                 if (course != null)
                 {
-                    if (ICourseList.CourseList.Contains(course.courseCode))
+                    if (iCourseList.CourseList.Contains(course.courseCode))
                     {
-                        ICourseList.CourseList.Remove(course.courseCode);
+                        iCourseList.CourseList.Remove(course.courseCode);
                     }
                     else
                     {
-                        ICourseList.CourseList.Add(course.courseCode);
+                        iCourseList.CourseList.Add(course.courseCode);
                     }
+
+                    PaintListView(this.selectedCoursesListView);
                 }
-                PaintListView(this.selectedCoursesListView);
             }
         }
-
 
 
         private void AllCoursesListView__ItemActivate(object sender, EventArgs e)
@@ -305,24 +418,25 @@ namespace EditPerson
 
             string courseCode = null;
 
-            courseCode = lv.SelectedItems[0].Text.ToString();
+            courseCode = lv.SelectedItems[0].Tag.ToString();
 
             course = Globals.courses[courseCode];
 
-            ICourseList ICourseList = (ICourseList)formPerson;
+            ICourseList iCourseList = (ICourseList)formPerson;
 
             if (course != null)
             {
-                if (ICourseList.CourseList.Contains(course.courseCode))
+                if (iCourseList.CourseList.Contains(course.courseCode))
                 {
-                    ICourseList.CourseList.Remove(course.courseCode);
+                    iCourseList.CourseList.Remove(course.courseCode);
                 }
                 else
                 {
-                    ICourseList.CourseList.Add(course.courseCode);
+                    iCourseList.CourseList.Add(course.courseCode);
                 }
+
+                PaintListView(this.selectedCoursesListView);
             }
-            PaintListView(this.selectedCoursesListView);
         }
 
         private void PaintListView(ListView lv)
@@ -330,12 +444,11 @@ namespace EditPerson
             ListViewItem lvi = null;
             ListViewItem.ListViewSubItem lvsi = null;
 
-
-            // 12. clear the listview items
-            lv.Items.Clear();
-
-            // 13. lock the listview to begin updating it
+            // 12. lock the listview to begin updating it
             lv.BeginUpdate();
+
+            // 13. clear the listview items
+            lv.Items.Clear();
 
             int lviCntr = 0;
 
@@ -443,7 +556,6 @@ namespace EditPerson
         }
 
 
-
         private void PersonEditForm__FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.Owner != null)
@@ -476,7 +588,13 @@ namespace EditPerson
                 PaintListView(this.allCoursesListView);
                 PaintListView(this.selectedCoursesListView);
             }
+            else if (tc.SelectedTab == this.scheduleTabPage)
+            {
+                this.AcceptButton = null;
+                this.CancelButton = null;
 
+                this.scheduleWebBrowser.Navigate("https://people.rit.edu/dxsigm/schedule.html");
+            }
         }
 
         private void BirthDateTimePicker__ValueChanged(object sender, EventArgs e)
@@ -489,7 +607,7 @@ namespace EditPerson
             }
             else
             {
-                dtp.CustomFormat = "MMM d, yyy";
+                dtp.CustomFormat = "MMM d, yyyy";
             }
         }
 
@@ -503,28 +621,35 @@ namespace EditPerson
             }
         }
 
-        private void RatingRadioButton__CheckedChanged(object sender, EventArgs e)
+        private void ClassRadioButton__CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
 
+            // if the radio button is checked
             if (rb.Checked)
             {
-                if (rb == this.greatRadioButton)
+                if (rb == this.froshRadioButton)
                 {
-                    this.ratingLabel.Text = "sign me up";
+                    classOfLabel.Text = "Class of 2023";
                 }
 
-                if (rb == this.okRadioButton)
+                if (rb == this.sophRadioButton)
                 {
-                    this.ratingLabel.Text = "ok";
+                    classOfLabel.Text = "Class of 2022";
                 }
 
-                if (rb == this.mehRadioButton)
+                if (rb == this.juniorRadioButton)
                 {
-                    this.ratingLabel.Text = "run away!";
+                    classOfLabel.Text = "Class of 2021";
+                }
+
+                if (rb == this.seniorRadioButton)
+                {
+                    classOfLabel.Text = "Class of 2020";
                 }
             }
         }
+
 
         private void OkButton__Click(object sender, EventArgs e)
         {
@@ -534,14 +659,18 @@ namespace EditPerson
 
             Globals.people.Remove(this.formPerson.email);
 
+            ICourseList iCourseList = (ICourseList)formPerson;
+
             if (this.typeComboBox.SelectedIndex == 0)
             {
                 student = new Student();
+                student.CourseList = iCourseList.CourseList;
                 person = student;
             }
             else
             {
                 teacher = new Teacher();
+                teacher.CourseList = iCourseList.CourseList;
                 person = teacher;
             }
 
@@ -550,43 +679,52 @@ namespace EditPerson
             person.age = Convert.ToInt32(this.ageText.Text);
             person.LicenseId = Convert.ToInt32(this.licText.Text);
             person.dateOfBirth = this.birthDateTimePicker.Value;
-            person.homePageURL = this.homePageTabPage.Text;
-
-            if (this.brocolliRadioButton.Checked)
-            {
-                person.eFavoriteFood = EFavoriteFood.brocolli;
-            }
-            else if (this.pizzaRadioButton.Checked)
-            {
-                person.eFavoriteFood = EFavoriteFood.pizza;
-            }
-            else if (this.applesRadioButton.Checked)
-            {
-                person.eFavoriteFood = EFavoriteFood.apples;
-            }
+            person.homePageURL = this.homepageTextBox.Text;
 
             person.photoPath = this.photoPictureBox.ImageLocation;
+
+            if (this.herRadioButton.Checked)
+            {
+                person.eGender = EGenderPronoun.her;
+            }
+
+            if (this.himRadioButton.Checked)
+            {
+                person.eGender = EGenderPronoun.him;
+            }
+
+            if (this.themRadioButton.Checked)
+            {
+                person.eGender = EGenderPronoun.them;
+            }
 
             if (person.GetType() == typeof(Student))
             {
                 student.gpa = Convert.ToDouble(this.gpaText.Text);
+
+                if (this.froshRadioButton.Checked)
+                {
+                    student.eCollegeYear = ECollegeYear.freshman;
+                }
+
+                if (this.sophRadioButton.Checked)
+                {
+                    student.eCollegeYear = ECollegeYear.sophomore;
+                }
+
+                if (this.juniorRadioButton.Checked)
+                {
+                    student.eCollegeYear = ECollegeYear.junior;
+                }
+
+                if (this.seniorRadioButton.Checked)
+                {
+                    student.eCollegeYear = ECollegeYear.senior;
+                }
             }
             else
             {
                 teacher.specialty = this.specText.Text;
-
-                if (this.greatRadioButton.Checked)
-                {
-                    teacher.eRating = ERating.great;
-                }
-                else if (this.okRadioButton.Checked)
-                {
-                    teacher.eRating = ERating.ok;
-                }
-                else if (this.mehRadioButton.Checked)
-                {
-                    teacher.eRating = ERating.meh;
-                }
             }
 
             Globals.people[person.email] = person;
@@ -596,8 +734,15 @@ namespace EditPerson
                 this.Owner.Enabled = true;
                 this.Owner.Focus();
 
+                // redraw the people listview with the updated details
                 IListView listView = (IListView)this.Owner;
                 listView.PaintListView(person.email);
+
+                // cannot use PeopleListForm because it would create a circular dependency
+                // PeopleList.dll depends on EditPerson.dll
+                // we would now need EditPerson.dll to depend on PeopleList.dll
+                //PersonListForm personListForm = (PeopleListForm)this.Owner;
+                //personListForm.PaintListView();
             }
 
             this.Close();
@@ -633,7 +778,8 @@ namespace EditPerson
 
                 this.gpaText.Tag = (this.gpaText.Text.Length > 0);
 
-                this.ratingGroupBox.Visible = false;
+                // college year group box should be visible for Student
+                this.classGroupBox.Visible = true;
             }
             else
             {
@@ -647,12 +793,8 @@ namespace EditPerson
 
                 this.specText.Tag = (this.specText.Text.Length > 0);
 
-                this.ratingGroupBox.Visible = true;
-
-                if (!this.greatRadioButton.Checked && !this.okRadioButton.Checked && !this.mehRadioButton.Checked)
-                {
-                    this.okRadioButton.Checked = true;
-                }
+                // college year group box should not be visible for Teacher
+                this.classGroupBox.Visible = false;
             }
 
             ValidateAll();
@@ -734,16 +876,6 @@ namespace EditPerson
 
 
         public void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void allCoursesListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
 
         }

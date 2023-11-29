@@ -40,7 +40,7 @@
       <HintPath>..\CourseLib\bin\Debug\CourseLib.dll</HintPath>
     </Reference>
     <Reference Include="PeopleAppGlobals">
-      <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
+      <HintPath>..\PeopleList\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>
     <Reference Include="PeopleLib">
       <HintPath>..\PeopleLib\bin\Debug\PeopleLib.dll</HintPath>
@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditCourseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCourseForm.Designer.cs">
+      <DependentUpon>EditCourseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PersonEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EditCourseForm.resx">
+      <DependentUpon>EditCourseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PersonEditForm.resx">
       <DependentUpon>PersonEditForm.cs</DependentUpon>
     </EmbeddedResource>

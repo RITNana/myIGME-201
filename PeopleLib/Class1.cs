@@ -20,13 +20,13 @@ namespace PeopleLib
         meh
     }
 
-    public enum genderPronoun
+    public enum EGenderPronoun
     {
         him,
         her,
         them
     }
-    public enum collegeYear : byte
+    public enum ECollegeYear : byte
     {
         freshman = 23,
         sophomore = 22,
@@ -47,7 +47,7 @@ namespace PeopleLib
     {
         public string name;
         public int age;
-        public genderPronoun eGender;
+        public EGenderPronoun eGender;
         public string email;
 
         public EFavoriteFood eFavoriteFood;
@@ -125,7 +125,7 @@ namespace PeopleLib
     public class Student : Person, IPerson, IStudent, ICourseList
     {
         public double gpa;
-        public collegeYear eCollegeYear;
+        public ECollegeYear eCollegeYear;
         //public List<string> courseCodes = new List<string>();
 
         public List<String> CourseList
