@@ -31,13 +31,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EditPerson">
-      <HintPath>..\..\..\..\..\Downloads\WindowsPeopleApp_12_3\WindowsPeopleApp\EditPerson\bin\Debug\EditPerson.dll</HintPath>
+      <HintPath>..\EditPerson\bin\Debug\EditPerson.dll</HintPath>
     </Reference>
     <Reference Include="PeopleAppGlobals, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\PeopleAppGlobals.dll</HintPath>
+      <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>
-    <Reference Include="PeopleLib">
+    <Reference Include="PeopleLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PeopleLib\bin\Debug\PeopleLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />

@@ -36,13 +36,16 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CourseLib">
+    <Reference Include="CourseLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CourseLib\bin\Debug\CourseLib.dll</HintPath>
     </Reference>
-    <Reference Include="PeopleAppGlobals">
-      <HintPath>..\PeopleList\bin\Debug\PeopleAppGlobals.dll</HintPath>
+    <Reference Include="PeopleAppGlobals, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>
-    <Reference Include="PeopleLib">
+    <Reference Include="PeopleLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PeopleLib\bin\Debug\PeopleLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
