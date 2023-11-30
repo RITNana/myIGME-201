@@ -323,11 +323,11 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.countdownLabel);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.richTextBox);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 371);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 395);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 28);
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(800, 422);
+            this.toolStripContainer1.Size = new System.Drawing.Size(800, 450);
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -361,7 +361,7 @@
             this.countdownLabel.ForeColor = System.Drawing.Color.Red;
             this.countdownLabel.Location = new System.Drawing.Point(0, 0);
             this.countdownLabel.Name = "countdownLabel";
-            this.countdownLabel.Size = new System.Drawing.Size(800, 371);
+            this.countdownLabel.Size = new System.Drawing.Size(800, 395);
             this.countdownLabel.TabIndex = 2;
             this.countdownLabel.Text = "3";
             this.countdownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -373,7 +373,7 @@
             this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox.Location = new System.Drawing.Point(0, 0);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(800, 371);
+            this.richTextBox.Size = new System.Drawing.Size(800, 395);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
             // 
