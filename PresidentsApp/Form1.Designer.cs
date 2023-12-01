@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bhRadioButton = new System.Windows.Forms.RadioButton();
             this.fdrRadioButton = new System.Windows.Forms.RadioButton();
             this.wjcRadioButton = new System.Windows.Forms.RadioButton();
@@ -44,17 +45,18 @@
             this.jaRadioButton = new System.Windows.Forms.RadioButton();
             this.trRadioButton = new System.Windows.Forms.RadioButton();
             this.tjRadioButton = new System.Windows.Forms.RadioButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.photoPictureBox = new System.Windows.Forms.PictureBox();
             this.filterGroupBox = new System.Windows.Forms.GroupBox();
-            this.allRadioButton = new System.Windows.Forms.RadioButton();
-            this.democratRadioButton = new System.Windows.Forms.RadioButton();
-            this.republicanRadioButton = new System.Windows.Forms.RadioButton();
-            this.demorepRadioButton = new System.Windows.Forms.RadioButton();
             this.federalistRadioButton = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.demorepRadioButton = new System.Windows.Forms.RadioButton();
+            this.republicanRadioButton = new System.Windows.Forms.RadioButton();
+            this.democratRadioButton = new System.Windows.Forms.RadioButton();
+            this.allRadioButton = new System.Windows.Forms.RadioButton();
+            this.wikiGroupBox = new System.Windows.Forms.GroupBox();
+            this.wikiWebBrowser = new System.Windows.Forms.WebBrowser();
             this.exitButton = new System.Windows.Forms.Button();
             this.bhTextBox = new System.Windows.Forms.TextBox();
-            this.jmTextBox = new System.Windows.Forms.TextBox();
+            this.jbTextBox = new System.Windows.Forms.TextBox();
             this.wjcTextBox = new System.Windows.Forms.TextBox();
             this.fdrTextBox = new System.Windows.Forms.TextBox();
             this.jfkTextBox = new System.Windows.Forms.TextBox();
@@ -68,9 +70,17 @@
             this.rrTextBox = new System.Windows.Forms.TextBox();
             this.ddeTextBox = new System.Windows.Forms.TextBox();
             this.mvbTextBox = new System.Windows.Forms.TextBox();
-            this.wmcTextBox = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.wmkTextBox = new System.Windows.Forms.TextBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).BeginInit();
             this.filterGroupBox.SuspendLayout();
+            this.wikiGroupBox.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // bhRadioButton
@@ -250,14 +260,15 @@
             this.tjRadioButton.Text = "Thomas Jefferson";
             this.tjRadioButton.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // photoPictureBox
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.LightGray;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 215);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(125, 174);
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
+            this.photoPictureBox.BackColor = System.Drawing.Color.LightGray;
+            this.photoPictureBox.Location = new System.Drawing.Point(14, 215);
+            this.photoPictureBox.Name = "photoPictureBox";
+            this.photoPictureBox.Size = new System.Drawing.Size(125, 174);
+            this.photoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.photoPictureBox.TabIndex = 16;
+            this.photoPictureBox.TabStop = false;
             // 
             // filterGroupBox
             // 
@@ -274,38 +285,16 @@
             this.filterGroupBox.Text = "Filter";
             this.filterGroupBox.Enter += new System.EventHandler(this.filterGroupBox_Enter);
             // 
-            // allRadioButton
+            // federalistRadioButton
             // 
-            this.allRadioButton.AutoSize = true;
-            this.allRadioButton.Location = new System.Drawing.Point(6, 19);
-            this.allRadioButton.Name = "allRadioButton";
-            this.allRadioButton.Size = new System.Drawing.Size(36, 17);
-            this.allRadioButton.TabIndex = 0;
-            this.allRadioButton.TabStop = true;
-            this.allRadioButton.Text = "All";
-            this.allRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // democratRadioButton
-            // 
-            this.democratRadioButton.AutoSize = true;
-            this.democratRadioButton.Location = new System.Drawing.Point(6, 42);
-            this.democratRadioButton.Name = "democratRadioButton";
-            this.democratRadioButton.Size = new System.Drawing.Size(71, 17);
-            this.democratRadioButton.TabIndex = 1;
-            this.democratRadioButton.TabStop = true;
-            this.democratRadioButton.Text = "Democrat";
-            this.democratRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // republicanRadioButton
-            // 
-            this.republicanRadioButton.AutoSize = true;
-            this.republicanRadioButton.Location = new System.Drawing.Point(6, 65);
-            this.republicanRadioButton.Name = "republicanRadioButton";
-            this.republicanRadioButton.Size = new System.Drawing.Size(79, 17);
-            this.republicanRadioButton.TabIndex = 2;
-            this.republicanRadioButton.TabStop = true;
-            this.republicanRadioButton.Text = "Republican";
-            this.republicanRadioButton.UseVisualStyleBackColor = true;
+            this.federalistRadioButton.AutoSize = true;
+            this.federalistRadioButton.Location = new System.Drawing.Point(6, 111);
+            this.federalistRadioButton.Name = "federalistRadioButton";
+            this.federalistRadioButton.Size = new System.Drawing.Size(70, 17);
+            this.federalistRadioButton.TabIndex = 4;
+            this.federalistRadioButton.TabStop = true;
+            this.federalistRadioButton.Text = "Federalist";
+            this.federalistRadioButton.UseVisualStyleBackColor = true;
             // 
             // demorepRadioButton
             // 
@@ -318,30 +307,62 @@
             this.demorepRadioButton.Text = "Democratic-Republican";
             this.demorepRadioButton.UseVisualStyleBackColor = true;
             // 
-            // federalistRadioButton
+            // republicanRadioButton
             // 
-            this.federalistRadioButton.AutoSize = true;
-            this.federalistRadioButton.Location = new System.Drawing.Point(6, 111);
-            this.federalistRadioButton.Name = "federalistRadioButton";
-            this.federalistRadioButton.Size = new System.Drawing.Size(70, 17);
-            this.federalistRadioButton.TabIndex = 4;
-            this.federalistRadioButton.TabStop = true;
-            this.federalistRadioButton.Text = "Federalist";
-            this.federalistRadioButton.UseVisualStyleBackColor = true;
+            this.republicanRadioButton.AutoSize = true;
+            this.republicanRadioButton.Location = new System.Drawing.Point(6, 65);
+            this.republicanRadioButton.Name = "republicanRadioButton";
+            this.republicanRadioButton.Size = new System.Drawing.Size(79, 17);
+            this.republicanRadioButton.TabIndex = 2;
+            this.republicanRadioButton.TabStop = true;
+            this.republicanRadioButton.Text = "Republican";
+            this.republicanRadioButton.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // democratRadioButton
             // 
-            this.groupBox1.Location = new System.Drawing.Point(384, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(404, 382);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.democratRadioButton.AutoSize = true;
+            this.democratRadioButton.Location = new System.Drawing.Point(6, 42);
+            this.democratRadioButton.Name = "democratRadioButton";
+            this.democratRadioButton.Size = new System.Drawing.Size(71, 17);
+            this.democratRadioButton.TabIndex = 1;
+            this.democratRadioButton.TabStop = true;
+            this.democratRadioButton.Text = "Democrat";
+            this.democratRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // allRadioButton
+            // 
+            this.allRadioButton.AutoSize = true;
+            this.allRadioButton.Location = new System.Drawing.Point(6, 19);
+            this.allRadioButton.Name = "allRadioButton";
+            this.allRadioButton.Size = new System.Drawing.Size(36, 17);
+            this.allRadioButton.TabIndex = 0;
+            this.allRadioButton.TabStop = true;
+            this.allRadioButton.Text = "All";
+            this.allRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // wikiGroupBox
+            // 
+            this.wikiGroupBox.Controls.Add(this.wikiWebBrowser);
+            this.wikiGroupBox.Location = new System.Drawing.Point(384, 12);
+            this.wikiGroupBox.Name = "wikiGroupBox";
+            this.wikiGroupBox.Size = new System.Drawing.Size(517, 512);
+            this.wikiGroupBox.TabIndex = 5;
+            this.wikiGroupBox.TabStop = false;
+            this.wikiGroupBox.Text = "groupBox1";
+            // 
+            // wikiWebBrowser
+            // 
+            this.wikiWebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wikiWebBrowser.Location = new System.Drawing.Point(3, 16);
+            this.wikiWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wikiWebBrowser.Name = "wikiWebBrowser";
+            this.wikiWebBrowser.Size = new System.Drawing.Size(511, 493);
+            this.wikiWebBrowser.TabIndex = 0;
             // 
             // exitButton
             // 
             this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.Location = new System.Drawing.Point(713, 415);
+            this.exitButton.Location = new System.Drawing.Point(826, 530);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 0;
@@ -355,13 +376,15 @@
             this.bhTextBox.Name = "bhTextBox";
             this.bhTextBox.Size = new System.Drawing.Size(26, 20);
             this.bhTextBox.TabIndex = 18;
+            this.bhTextBox.Text = "0";
             // 
-            // jmTextBox
+            // jbTextBox
             // 
-            this.jmTextBox.Location = new System.Drawing.Point(172, 87);
-            this.jmTextBox.Name = "jmTextBox";
-            this.jmTextBox.Size = new System.Drawing.Size(26, 20);
-            this.jmTextBox.TabIndex = 19;
+            this.jbTextBox.Location = new System.Drawing.Point(172, 87);
+            this.jbTextBox.Name = "jbTextBox";
+            this.jbTextBox.Size = new System.Drawing.Size(26, 20);
+            this.jbTextBox.TabIndex = 19;
+            this.jbTextBox.Text = "0";
             // 
             // wjcTextBox
             // 
@@ -369,6 +392,7 @@
             this.wjcTextBox.Name = "wjcTextBox";
             this.wjcTextBox.Size = new System.Drawing.Size(26, 20);
             this.wjcTextBox.TabIndex = 20;
+            this.wjcTextBox.Text = "0";
             this.wjcTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // fdrTextBox
@@ -377,6 +401,7 @@
             this.fdrTextBox.Name = "fdrTextBox";
             this.fdrTextBox.Size = new System.Drawing.Size(26, 20);
             this.fdrTextBox.TabIndex = 21;
+            this.fdrTextBox.Text = "0";
             // 
             // jfkTextBox
             // 
@@ -384,6 +409,7 @@
             this.jfkTextBox.Name = "jfkTextBox";
             this.jfkTextBox.Size = new System.Drawing.Size(26, 20);
             this.jfkTextBox.TabIndex = 22;
+            this.jfkTextBox.Text = "0";
             // 
             // boTextBox
             // 
@@ -391,6 +417,7 @@
             this.boTextBox.Name = "boTextBox";
             this.boTextBox.Size = new System.Drawing.Size(26, 20);
             this.boTextBox.TabIndex = 23;
+            this.boTextBox.Text = "0";
             // 
             // gwbTextBox
             // 
@@ -398,6 +425,7 @@
             this.gwbTextBox.Name = "gwbTextBox";
             this.gwbTextBox.Size = new System.Drawing.Size(26, 20);
             this.gwbTextBox.TabIndex = 24;
+            this.gwbTextBox.Text = "0";
             // 
             // fpTextBox
             // 
@@ -405,6 +433,7 @@
             this.fpTextBox.Name = "fpTextBox";
             this.fpTextBox.Size = new System.Drawing.Size(26, 20);
             this.fpTextBox.TabIndex = 25;
+            this.fpTextBox.Text = "0";
             // 
             // gwTextBox
             // 
@@ -412,6 +441,7 @@
             this.gwTextBox.Name = "gwTextBox";
             this.gwTextBox.Size = new System.Drawing.Size(26, 20);
             this.gwTextBox.TabIndex = 33;
+            this.gwTextBox.Text = "0";
             // 
             // jaTextBox
             // 
@@ -419,6 +449,7 @@
             this.jaTextBox.Name = "jaTextBox";
             this.jaTextBox.Size = new System.Drawing.Size(26, 20);
             this.jaTextBox.TabIndex = 32;
+            this.jaTextBox.Text = "0";
             // 
             // trTextBox
             // 
@@ -426,6 +457,7 @@
             this.trTextBox.Name = "trTextBox";
             this.trTextBox.Size = new System.Drawing.Size(26, 20);
             this.trTextBox.TabIndex = 31;
+            this.trTextBox.Text = "0";
             // 
             // tjTextBox
             // 
@@ -433,6 +465,7 @@
             this.tjTextBox.Name = "tjTextBox";
             this.tjTextBox.Size = new System.Drawing.Size(26, 20);
             this.tjTextBox.TabIndex = 30;
+            this.tjTextBox.Text = "0";
             // 
             // rrTextBox
             // 
@@ -440,6 +473,7 @@
             this.rrTextBox.Name = "rrTextBox";
             this.rrTextBox.Size = new System.Drawing.Size(26, 20);
             this.rrTextBox.TabIndex = 29;
+            this.rrTextBox.Text = "0";
             // 
             // ddeTextBox
             // 
@@ -447,6 +481,7 @@
             this.ddeTextBox.Name = "ddeTextBox";
             this.ddeTextBox.Size = new System.Drawing.Size(26, 20);
             this.ddeTextBox.TabIndex = 28;
+            this.ddeTextBox.Text = "0";
             // 
             // mvbTextBox
             // 
@@ -454,20 +489,57 @@
             this.mvbTextBox.Name = "mvbTextBox";
             this.mvbTextBox.Size = new System.Drawing.Size(26, 20);
             this.mvbTextBox.TabIndex = 27;
+            this.mvbTextBox.Text = "0";
             // 
-            // wmcTextBox
+            // wmkTextBox
             // 
-            this.wmcTextBox.Location = new System.Drawing.Point(352, 11);
-            this.wmcTextBox.Name = "wmcTextBox";
-            this.wmcTextBox.Size = new System.Drawing.Size(26, 20);
-            this.wmcTextBox.TabIndex = 26;
+            this.wmkTextBox.Location = new System.Drawing.Point(352, 11);
+            this.wmkTextBox.Name = "wmkTextBox";
+            this.wmkTextBox.Size = new System.Drawing.Size(26, 20);
+            this.wmkTextBox.TabIndex = 26;
+            this.wmkTextBox.Text = "0";
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 603);
+            this.splitter1.TabIndex = 34;
+            this.splitter1.TabStop = false;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(3, 581);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(910, 22);
+            this.statusStrip1.TabIndex = 35;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(650, 16);
+            this.toolStripProgressBar1.Value = 100;
+            this.toolStripProgressBar1.Click += new System.EventHandler(this.toolStripProgressBar1_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 60000;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // PresidentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.exitButton;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(913, 603);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.splitter1);
             this.Controls.Add(this.gwTextBox);
             this.Controls.Add(this.jaTextBox);
             this.Controls.Add(this.trTextBox);
@@ -475,19 +547,19 @@
             this.Controls.Add(this.rrTextBox);
             this.Controls.Add(this.ddeTextBox);
             this.Controls.Add(this.mvbTextBox);
-            this.Controls.Add(this.wmcTextBox);
+            this.Controls.Add(this.wmkTextBox);
             this.Controls.Add(this.fpTextBox);
             this.Controls.Add(this.gwbTextBox);
             this.Controls.Add(this.boTextBox);
             this.Controls.Add(this.jfkTextBox);
             this.Controls.Add(this.fdrTextBox);
             this.Controls.Add(this.wjcTextBox);
-            this.Controls.Add(this.jmTextBox);
+            this.Controls.Add(this.jbTextBox);
             this.Controls.Add(this.bhTextBox);
             this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.wikiGroupBox);
             this.Controls.Add(this.filterGroupBox);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.photoPictureBox);
             this.Controls.Add(this.tjRadioButton);
             this.Controls.Add(this.trRadioButton);
             this.Controls.Add(this.jaRadioButton);
@@ -506,9 +578,13 @@
             this.Controls.Add(this.bhRadioButton);
             this.Name = "PresidentsForm";
             this.Text = "Presidents";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).EndInit();
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
+            this.wikiGroupBox.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,17 +608,17 @@
         private System.Windows.Forms.RadioButton jaRadioButton;
         private System.Windows.Forms.RadioButton trRadioButton;
         private System.Windows.Forms.RadioButton tjRadioButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox photoPictureBox;
         private System.Windows.Forms.GroupBox filterGroupBox;
         private System.Windows.Forms.RadioButton federalistRadioButton;
         private System.Windows.Forms.RadioButton demorepRadioButton;
         private System.Windows.Forms.RadioButton republicanRadioButton;
         private System.Windows.Forms.RadioButton democratRadioButton;
         private System.Windows.Forms.RadioButton allRadioButton;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox wikiGroupBox;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.TextBox bhTextBox;
-        private System.Windows.Forms.TextBox jmTextBox;
+        private System.Windows.Forms.TextBox jbTextBox;
         private System.Windows.Forms.TextBox wjcTextBox;
         private System.Windows.Forms.TextBox fdrTextBox;
         private System.Windows.Forms.TextBox jfkTextBox;
@@ -556,7 +632,13 @@
         private System.Windows.Forms.TextBox rrTextBox;
         private System.Windows.Forms.TextBox ddeTextBox;
         private System.Windows.Forms.TextBox mvbTextBox;
-        private System.Windows.Forms.TextBox wmcTextBox;
+        private System.Windows.Forms.TextBox wmkTextBox;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.WebBrowser wikiWebBrowser;
     }
 }
 

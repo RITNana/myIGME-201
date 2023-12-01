@@ -22,8 +22,8 @@ namespace Sarpong_PE17
             nRandom = rand.Next(lowNumber, highNumber + 1);
 
             this.timer.Interval = 500;
+            this.progressBar.Value = 90;
 
-            this.progressBar.Value = 45;
 
 
             this.guessButton.Click += new EventHandler(GuessButton__Click);
@@ -81,7 +81,7 @@ namespace Sarpong_PE17
 
         private void Timer__Tick(object sender, EventArgs e)
         {
-
+            
 
             --this.progressBar.Value;
             if (this.progressBar.Value == 0)
