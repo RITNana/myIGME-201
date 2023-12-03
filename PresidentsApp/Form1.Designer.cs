@@ -76,6 +76,7 @@
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.messageToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).BeginInit();
             this.filterGroupBox.SuspendLayout();
             this.wikiGroupBox.SuspendLayout();
@@ -376,6 +377,7 @@
             this.bhTextBox.Name = "bhTextBox";
             this.bhTextBox.Size = new System.Drawing.Size(26, 20);
             this.bhTextBox.TabIndex = 18;
+            this.bhTextBox.Tag = "";
             this.bhTextBox.Text = "0";
             // 
             // jbTextBox
@@ -519,14 +521,14 @@
             // 
             // toolStripProgressBar1
             // 
+            this.toolStripProgressBar1.Maximum = 600;
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(650, 16);
-            this.toolStripProgressBar1.Value = 100;
             this.toolStripProgressBar1.Click += new System.EventHandler(this.toolStripProgressBar1_Click);
             // 
             // timer1
             // 
-            this.timer1.Interval = 60000;
+            this.timer1.Interval = 300;
             // 
             // errorProvider
             // 
@@ -576,6 +578,8 @@
             this.Controls.Add(this.wjcRadioButton);
             this.Controls.Add(this.fdrRadioButton);
             this.Controls.Add(this.bhRadioButton);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PresidentsForm";
             this.Text = "Presidents";
             ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).EndInit();
@@ -639,6 +643,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.WebBrowser wikiWebBrowser;
+        private System.Windows.Forms.ToolTip messageToolTip;
     }
 }
 

@@ -4,22 +4,24 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
+
+
 
 namespace PresidentsApp
 {
     public partial class PresidentsForm : Form
     {
+        
         public PresidentsForm()
         {
             /******************************************************************************************
                **************THIS MUST BE THE FIRST FUNCTION CALL IN YOUR FORM CONSTRUCTOR **************
                ******************************************************************************************/
             InitializeComponent();
+           
 
             try
             {
@@ -33,8 +35,52 @@ namespace PresidentsApp
             catch
             {
 
+
+
+
             }
+
+            List<TextBox> presidentTextBoxes = new List<TextBox>
+            {
+                 bhTextBox,
+                fdrTextBox,
+                wjcTextBox,
+                jbTextBox,
+                fpTextBox,
+                gwbTextBox,
+                boTextBox,
+                jfkTextBox,
+                wmkTextBox,
+                rrTextBox,
+                ddeTextBox,
+                mvbTextBox,
+                gwTextBox,
+                jaTextBox,
+                trTextBox,
+                tjTextBox,
+                };
+                
             
+
+            presidentTextBoxes[0].Tag = 23;
+            presidentTextBoxes[1].Tag = 32;
+            presidentTextBoxes[2].Tag = 42;
+            presidentTextBoxes[3].Tag = 15;
+            presidentTextBoxes[4].Tag = 14;
+            presidentTextBoxes[5].Tag = 43;
+            presidentTextBoxes[6].Tag = 44;
+            presidentTextBoxes[7].Tag = 35;
+            presidentTextBoxes[8].Tag = 25;
+            presidentTextBoxes[9].Tag = 40;
+            presidentTextBoxes[10].Tag = 34;
+            presidentTextBoxes[11].Tag = 8;
+            presidentTextBoxes[12].Tag = 1;
+            presidentTextBoxes[13].Tag = 2;
+            presidentTextBoxes[14].Tag = 26;
+            presidentTextBoxes[15].Tag = 3;
+
+
+
             // 1) Create our Form controls for the president radio buttons
             // Because they are all radio buttons we wil put them in the same Delegate Method
 
@@ -86,7 +132,7 @@ namespace PresidentsApp
             // Thomas Jefferson
             this.tjRadioButton.CheckedChanged += new EventHandler(this.PresidentRadioButton__CheckedChanged);
 
-            this.bhTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
+          /*  this.bhTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.fdrTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.wjcTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.jbTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
@@ -101,7 +147,7 @@ namespace PresidentsApp
             this.gwTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.jaTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.trTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.tjTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
+            this.tjTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged); */
 
 
             this.bhTextBox.KeyPress += new KeyPressEventHandler(TxtBoxNum__KeyPress);
@@ -156,7 +202,14 @@ namespace PresidentsApp
             this.exitButton.Enabled = false;
             this.allRadioButton.Checked = true;
 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 300;
+            this.toolStripProgressBar1.Value = 600;
+
+            
+
+
+
+
 
         }
 
@@ -168,91 +221,106 @@ namespace PresidentsApp
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Franklin_D_Roosevelt";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Franklin_D_Roosevelt");
 
-            } else if (wjcRadioButton.Checked)
+            }
+            else if (wjcRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/WilliamJClinton.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/William_J_Clinton";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/William_J_Clinton");
 
-            } else if (jbRadioButton.Checked)
+            }
+            else if (jbRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/JamesBuchanan.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/James_Buchanan";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/James_Buchanan");
 
-            } else if (fpRadioButton.Checked)
+            }
+            else if (fpRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/FranklinPierce.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Franklin_Pierce";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Franklin_Pierce");
 
-            } else if (gwbRadioButton.Checked)
+            }
+            else if (gwbRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/GeorgeWBush.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/George_Bush";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/George_Bush");
 
-            } else if (boRadioButton.Checked)
+            }
+            else if (boRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/BarackObama.png";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Barack_Obama";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Barack_Obama");
 
-            } else if (jfkRadioButton.Checked)
+            }
+            else if (jfkRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/JohnFKennedy.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/John_F_Kennedy";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/John_F_Kennedy");
 
-            } else if (wmkRadioButton.Checked)
+            }
+            else if (wmkRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/WilliamMcKinley.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/William_McKinley";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/William_McKinley");
 
-            } else if (rrRadioButton.Checked)
+            }
+            else if (rrRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/RonaldReagan.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Ronald_Reagan";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Ronald_Reagan");
 
-            } else if (ddeRadioButton.Checked)
+            }
+            else if (ddeRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/DwightDEisenhower.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Dwight_D_Eisenhower";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Dwight_D_Eisenhower");
 
-            } else if (mvbRadioButton.Checked)
+            }
+            else if (mvbRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/MartinVanBuren.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Martin_VanBuren";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Martin_VanBuren");
 
-            } else if (gwRadioButton.Checked)
+            }
+            else if (gwRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/GeorgeWashington.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/George_Washington";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/George_Washington");
 
-            } else if (jaRadioButton.Checked)
+            }
+            else if (jaRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/JohnAdams.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/John_Adams";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/John_Adams");
 
-            } else if (trRadioButton.Checked)
+            }
+            else if (trRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/TheodoreRoosevelt.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Theodore_Roosevelt";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Theodore_Roosevelt");
 
-            } else if (tjRadioButton.Checked)
+            }
+            else if (tjRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/ThomasJefferson.jpeg";
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Thomas_Jefferson";
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Thomas_Jefferson");
 
-            } else  
+            }
+            else
             {
                 bhRadioButton.Checked = true;
                 this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Benjamin_Harrison";
@@ -288,7 +356,8 @@ namespace PresidentsApp
                     this.mvbRadioButton.Show();
                     this.gwRadioButton.Show();
                     this.jaRadioButton.Show();
-                } if (rb == this.democratRadioButton)
+                }
+                if (rb == this.democratRadioButton)
                 {
                     this.fdrRadioButton.Checked = true;
                     this.fdrRadioButton.Show();
@@ -311,7 +380,8 @@ namespace PresidentsApp
                     this.jaRadioButton.Hide();
                     this.trRadioButton.Hide();
                     this.tjRadioButton.Hide();
-                } if (rb == this.republicanRadioButton)
+                }
+                if (rb == this.republicanRadioButton)
                 {
                     this.bhRadioButton.Checked = true;
                     this.bhRadioButton.Show();
@@ -331,7 +401,8 @@ namespace PresidentsApp
                     this.gwRadioButton.Hide();
                     this.jaRadioButton.Hide();
                     this.tjRadioButton.Hide();
-                } if (rb == this.demorepRadioButton)
+                }
+                if (rb == this.demorepRadioButton)
                 {
                     this.tjRadioButton.Checked = true;
                     this.tjRadioButton.Show();
@@ -354,7 +425,8 @@ namespace PresidentsApp
                     this.gwRadioButton.Hide();
                     this.jaRadioButton.Hide();
 
-                } if (rb == this.federalistRadioButton)
+                }
+                if (rb == this.federalistRadioButton)
                 {
                     this.gwRadioButton.Checked = true;
                     this.gwRadioButton.Show();
@@ -376,27 +448,89 @@ namespace PresidentsApp
                     this.mvbRadioButton.Hide();
                 }
             }
-        
+
 
         }
 
+        private void TxtBoxEmpty__MouseOver(object sender, EventArgs e)
+        {
+            TextBox currentTB = (TextBox)sender;
+            this.messageToolTip.Show("What # President?", currentTB);
+        }
+
+
+
+
         private void Timer__Tick(object sender, EventArgs e)
         {
-
+            --this.toolStripProgressBar1.Value;
+            if(this.toolStripProgressBar1.Value == 0)
+            {
+                toolStripProgressBar1.Value = 600;
+            }
         }
 
         private void TxtBoxNum__KeyPress(object sender, KeyPressEventArgs e)
         {
+            TextBox tb = (TextBox)sender;
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                timer1.Start();
+                e.Handled = false;
+            }
+            else if (!Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            
+            
 
         }
 
-        private void TxtBoxEmpty__TextChanged(object sender, EventArgs e)
-        {
 
-        }
+
+     
+
         private void TxtBoxEmpty__Validating(object sender, CancelEventArgs e)
         {
+          
+            TextBox currentTB = (TextBox)sender;
+            int presidencyNumber;
 
+            if (currentTB.Text == "" && currentTB.Text != null)
+            {
+                currentTB.Text = "0";
+
+            } 
+            if(currentTB.Text != currentTB.Tag.ToString())
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+            if (!int.TryParse(currentTB.Text, out int nGuess))
+            {
+                // this.errorProvider.SetError(currentTB, "Please enter a valid number.");
+                return;
+            }
+
+            if (currentTB.Tag != null && int.TryParse(currentTB.Tag.ToString(), out presidencyNumber))
+            {
+                if (nGuess != presidencyNumber)
+                {
+                    this.errorProvider.SetError(currentTB, "That is the wrong number.");
+
+
+                }
+                else
+                {
+                    this.errorProvider.SetError(currentTB, ""); // Clear error message if correct
+                                                                // MessageBox.Show("Correct!");
+                }
+            }
         }
 
         private void WikiWebBrowser__DocumentCompleted(object sender, EventArgs e)
@@ -404,32 +538,34 @@ namespace PresidentsApp
 
         }
 
-            private void filterGroupBox_Enter(object sender, EventArgs e)
-            {
+        private void filterGroupBox_Enter(object sender, EventArgs e)
+        {
 
-            }
+        }
 
-            private void button1_Click(object sender, EventArgs e)
-            {
+        private void button1_Click(object sender, EventArgs e)
+        {
 
-            }
+        }
 
-            private void textBox3_TextChanged(object sender, EventArgs e)
-            {
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
 
-            }
+        }
 
-            private void fpRadioButton_CheckedChanged(object sender, EventArgs e)
-            {
+        private void fpRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
 
-            }
+        }
 
         private void toolStripProgressBar1_Click(object sender, EventArgs e)
         {
 
         }
 
-     
+       
+
     }
-    }
+}
+    
 
