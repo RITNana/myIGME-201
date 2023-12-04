@@ -96,7 +96,7 @@ namespace EditPerson
             this.homepageWebBrowser.ScriptErrorsSuppressed = true;
 
             this.FormClosing += new FormClosingEventHandler(PersonEditForm__FormClosing);
-
+            
             this.allCoursesListView.ItemActivate += new EventHandler(AllCoursesListView__ItemActivate);
             this.allCoursesListView.KeyDown += new KeyEventHandler(AllCoursesListView__KeyDown);
             this.courseSearchTextBox.TextChanged += new EventHandler(CourseSearchTextBox__TextChanged);
@@ -321,6 +321,7 @@ namespace EditPerson
 
                 htmlElement = wb.Document.GetElementById("lastParagraph");
                 htmlElement.SetAttribute("title", "this is the paragraph tooltip");
+                
 
                 HtmlElement htmlElement1 = wb.Document.CreateElement("img");
                 htmlElement1.SetAttribute("src", "https://en.bcdn.biz/Images/2018/6/12/27565ee3-ffc0-4a4d-af63-ce8731b65f26.jpg");

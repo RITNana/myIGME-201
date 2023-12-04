@@ -14,14 +14,14 @@ namespace PresidentsApp
 {
     public partial class PresidentsForm : Form
     {
-        
+
         public PresidentsForm()
         {
             /******************************************************************************************
                **************THIS MUST BE THE FIRST FUNCTION CALL IN YOUR FORM CONSTRUCTOR **************
                ******************************************************************************************/
             InitializeComponent();
-           
+
 
             try
             {
@@ -59,8 +59,8 @@ namespace PresidentsApp
                 trTextBox,
                 tjTextBox,
                 };
-                
-            
+
+
 
             presidentTextBoxes[0].Tag = 23;
             presidentTextBoxes[1].Tag = 32;
@@ -132,22 +132,6 @@ namespace PresidentsApp
             // Thomas Jefferson
             this.tjRadioButton.CheckedChanged += new EventHandler(this.PresidentRadioButton__CheckedChanged);
 
-          /*  this.bhTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.fdrTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.wjcTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.jbTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.fpTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.gwbTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.boTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.jfkTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.wmkTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.rrTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.ddeTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.mvbTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.gwTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.jaTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.trTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
-            this.tjTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged); */
 
 
             this.bhTextBox.KeyPress += new KeyPressEventHandler(TxtBoxNum__KeyPress);
@@ -195,6 +179,27 @@ namespace PresidentsApp
             this.demorepRadioButton.CheckedChanged += new EventHandler(FilterRadioButton__CheckedChanged);
             this.federalistRadioButton.CheckedChanged += new EventHandler(FilterRadioButton__CheckedChanged);
 
+            this.bhTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.fdrTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.wjcTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.jbTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.fpTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.gwbTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.boTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.jfkTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.wmkTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.rrTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.ddeTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.mvbTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.gwTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.jaTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.trTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+            this.tjTextBox.MouseHover += new EventHandler(TxtBoxEmpty__MouseOver);
+
+            this.photoPictureBox.MouseEnter += new EventHandler(PictureBox__MouseEnter);
+            this.photoPictureBox.MouseLeave += new EventHandler(PictureBox__MouseLeave);
+            this.exitButton.Click += new EventHandler(ExitButton__Click);
+
             // after all contols are configured then we can manipulate the data
             this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/Benjamin_Harrison";
             this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Benjamin_Harrison");
@@ -202,10 +207,11 @@ namespace PresidentsApp
             this.exitButton.Enabled = false;
             this.allRadioButton.Checked = true;
 
-            this.timer1.Interval = 300;
+            this.timer1.Interval = 200;
             this.toolStripProgressBar1.Value = 600;
 
             
+
 
 
 
@@ -246,8 +252,8 @@ namespace PresidentsApp
             else if (gwbRadioButton.Checked)
             {
                 this.photoPictureBox.ImageLocation = "https://people.rit.edu/dxsigm/GeorgeWBush.jpeg";
-                this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/George_Bush";
-                this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/George_Bush");
+                this.wikiGroupBox.Text = "https://en.m.wikipedia.org/wiki/George_W_Bush";
+                this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/George_W_Bush");
 
             }
             else if (boRadioButton.Checked)
@@ -327,6 +333,33 @@ namespace PresidentsApp
                 this.wikiWebBrowser.Navigate("https://en.m.wikipedia.org/wiki/Benjamin_Harrison");
                 this.photoPictureBox.ImageLocation = "http://people.rit.edu/dxsigm/BenjaminHarrison";
             }
+            if (((RadioButton)sender).Checked && AllHaveCorrectValues())
+            {
+                timer1.Stop();
+                this.wikiGroupBox.Text = "https://media.giphy.com/media/TmT51OyQLFD7a/giphy.gif";
+                this.wikiWebBrowser.Navigate("https://media.giphy.com/media/TmT51OyQLFD7a/giphy.gif");
+                this.exitButton.Enabled = true;
+                
+                
+               
+            }
+
+
+        }
+        private void PictureBox__MouseEnter(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            pictureBox.Width = pictureBox.Width + 200;
+            pictureBox.Height = pictureBox.Height + 200;
+            pictureBox.BringToFront();
+        }
+
+        private void PictureBox__MouseLeave(object sender, EventArgs e)
+        {
+            PictureBox picBox = (PictureBox)sender;
+            picBox.Width = picBox.Width - 200;
+            picBox.Height = picBox.Height - 200;
+
         }
 
         private void FilterRadioButton__CheckedChanged(object sender, EventArgs e)
@@ -448,14 +481,14 @@ namespace PresidentsApp
                     this.mvbRadioButton.Hide();
                 }
             }
-
-
         }
 
         private void TxtBoxEmpty__MouseOver(object sender, EventArgs e)
         {
             TextBox currentTB = (TextBox)sender;
-            this.messageToolTip.Show("What # President?", currentTB);
+            this.messageToolTip.IsBalloon = true;
+            messageToolTip.Show("What # Presidency?", currentTB);
+
         }
 
 
@@ -464,7 +497,7 @@ namespace PresidentsApp
         private void Timer__Tick(object sender, EventArgs e)
         {
             --this.toolStripProgressBar1.Value;
-            if(this.toolStripProgressBar1.Value == 0)
+            if (this.toolStripProgressBar1.Value == 0)
             {
                 toolStripProgressBar1.Value = 600;
             }
@@ -482,19 +515,15 @@ namespace PresidentsApp
             {
                 e.Handled = true;
             }
-
-            
-            
-
         }
 
 
 
-     
+
 
         private void TxtBoxEmpty__Validating(object sender, CancelEventArgs e)
         {
-          
+
             TextBox currentTB = (TextBox)sender;
             int presidencyNumber;
 
@@ -502,8 +531,8 @@ namespace PresidentsApp
             {
                 currentTB.Text = "0";
 
-            } 
-            if(currentTB.Text != currentTB.Tag.ToString())
+            }
+            if (currentTB.Text != currentTB.Tag.ToString())
             {
                 e.Cancel = true;
             }
@@ -528,44 +557,145 @@ namespace PresidentsApp
                 else
                 {
                     this.errorProvider.SetError(currentTB, ""); // Clear error message if correct
-                                                                // MessageBox.Show("Correct!");
+
+                    
                 }
             }
-        }
-
-        private void WikiWebBrowser__DocumentCompleted(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filterGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fpRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripProgressBar1_Click(object sender, EventArgs e)
-        {
 
         }
 
        
 
+
+
+        private bool BhCorrectValue()
+        {
+            // return int.TryParse(bhTextBox.Text, out int value) && value == 23;
+            return bhTextBox.Text == bhTextBox.Tag.ToString();
+        }
+
+
+        private bool FdrCorrectValue()
+        {
+            // return int.TryParse(fdrTextBox.Text, out int value) && value == 32;
+            return fdrTextBox.Text == fdrTextBox.Tag.ToString();
+        }
+
+
+        private bool WjcCorrectValue()
+        {
+            // return int.TryParse(wjcTextBox.Text, out int value) && value == 42;
+            return wjcTextBox.Text == wjcTextBox.Tag.ToString();
+        }
+
+
+        private bool JbCorrectValue()
+        {
+            //   return int.TryParse(jbTextBox.Text, out int value) && value == 15;
+            return jbTextBox.Text == jbTextBox.Tag.ToString();
+        }
+
+
+        private bool FpCorrectValue()
+        {
+          //  return int.TryParse(fpTextBox.Text, out int value) && value == 14;
+          return fpTextBox.Text == fpTextBox.Tag.ToString();
+        }
+
+
+        private bool GwbCorrectValue()
+        {
+            // return int.TryParse(gwbTextBox.Text, out int value) && value == 43;
+            return gwbTextBox.Text == gwbTextBox.Tag.ToString();
+        }
+
+
+        private bool BoCorrectValue()
+        {
+            //  return int.TryParse(boTextBox.Text, out int value) && value == 44;
+            return boTextBox.Text == boTextBox.Tag.ToString();
+        }
+
+
+        private bool JfkCorrectValue()
+        {
+            //  return int.TryParse(bhTextBox.Text, out int value) && value == 35;
+            return jfkTextBox.Text == jfkTextBox.Tag.ToString();
+        }
+
+        private bool WmkCorrectValue()
+        {
+            //  return int.TryParse(wmkTextBox.Text, out int value) && value == 25;
+            return wmkTextBox.Text == wmkTextBox.Tag.ToString();
+        }
+
+        private bool RRCorrectValue()
+        {
+            //   return int.TryParse(rrTextBox.Text, out int value) && value == 40;
+            return rrTextBox.Text == rrTextBox.Tag.ToString();
+        }
+        private bool DdeCorrectValue()
+        {
+            //  return int.TryParse(ddeTextBox.Text, out int value) && value == 34;
+            return ddeTextBox.Text == ddeTextBox.Tag.ToString();
+        }
+        private bool MvbCorrectValue()
+        {
+            //  return int.TryParse(mvbTextBox.Text, out int value) && value == 8;
+            return mvbTextBox.Text == mvbTextBox.Tag.ToString();
+        }
+        private bool GwCorrectValue()
+        {
+            //   return int.TryParse(gwTextBox.Text, out int value) && value == 1;
+            return gwTextBox.Text == gwTextBox.Tag.ToString();
+        }
+        private bool JaCorrectValue()
+        {
+            //   return int.TryParse(wmkTextBox.Text, out int value) && value == 2;
+            return jaTextBox.Text == jaTextBox.Tag.ToString();
+        }
+        private bool TrCorrectValue()
+        {
+            //  return int.TryParse(trTextBox.Text, out int value) && value == 26;
+            return trTextBox.Text == trTextBox.Tag.ToString();
+        }
+        private bool TjCorrectValue()
+        {
+            //   return int.TryParse(tjTextBox.Text, out int value) && value == 3;
+            return tjTextBox.Text == tjTextBox.Tag.ToString();
+        }
+
+        private bool AllHaveCorrectValues()
+        {
+            return BhCorrectValue() && FdrCorrectValue() && WjcCorrectValue() && JbCorrectValue() && FpCorrectValue() &&
+            GwbCorrectValue() && BoCorrectValue() && JfkCorrectValue() && WmkCorrectValue() &&
+            RRCorrectValue() && DdeCorrectValue() && MvbCorrectValue() && GwCorrectValue() &&
+            JaCorrectValue() && TrCorrectValue() && TjCorrectValue();
+        }
+
+        private void WikiWebBrowser__DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+            HtmlElementCollection links = wikiWebBrowser.Document.GetElementsByTagName("a");
+            foreach (HtmlElement link in links)
+            {
+                link.SetAttribute("title", "Professor Schuh for President!");
+            }
+
+        }
+
+        private void ExitButton__Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void wikiWebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
     }
+
 }
-    
+
+
 

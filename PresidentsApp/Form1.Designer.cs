@@ -138,7 +138,6 @@
             this.fpRadioButton.TabStop = true;
             this.fpRadioButton.Text = "Franklin Pierce";
             this.fpRadioButton.UseVisualStyleBackColor = true;
-            this.fpRadioButton.CheckedChanged += new System.EventHandler(this.fpRadioButton_CheckedChanged);
             // 
             // gwbRadioButton
             // 
@@ -284,7 +283,6 @@
             this.filterGroupBox.TabIndex = 17;
             this.filterGroupBox.TabStop = false;
             this.filterGroupBox.Text = "Filter";
-            this.filterGroupBox.Enter += new System.EventHandler(this.filterGroupBox_Enter);
             // 
             // federalistRadioButton
             // 
@@ -359,6 +357,7 @@
             this.wikiWebBrowser.Name = "wikiWebBrowser";
             this.wikiWebBrowser.Size = new System.Drawing.Size(511, 493);
             this.wikiWebBrowser.TabIndex = 0;
+            this.wikiWebBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wikiWebBrowser_DocumentCompleted);
             // 
             // exitButton
             // 
@@ -369,7 +368,6 @@
             this.exitButton.TabIndex = 0;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // bhTextBox
             // 
@@ -395,7 +393,6 @@
             this.wjcTextBox.Size = new System.Drawing.Size(26, 20);
             this.wjcTextBox.TabIndex = 20;
             this.wjcTextBox.Text = "0";
-            this.wjcTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // fdrTextBox
             // 
@@ -524,7 +521,6 @@
             this.toolStripProgressBar1.Maximum = 600;
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(650, 16);
-            this.toolStripProgressBar1.Click += new System.EventHandler(this.toolStripProgressBar1_Click);
             // 
             // timer1
             // 
@@ -540,6 +536,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.exitButton;
             this.ClientSize = new System.Drawing.Size(913, 603);
+            this.ControlBox = false;
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.gwTextBox);
