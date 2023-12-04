@@ -62,6 +62,7 @@ namespace Sarpong_PE17
                 this.outputLabel.Text = $"{userGuess} is too low";
             } else if 
                 (userGuess > nRandom)
+
             {
                 this.guessTextBox.Clear();
                 this.outputLabel.Text = $"{userGuess} is too high";
