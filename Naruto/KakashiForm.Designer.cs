@@ -52,6 +52,7 @@
             // 
             // toolStripProgressBar1
             // 
+            this.toolStripProgressBar1.Maximum = 10;
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(300, 16);
             // 
@@ -68,6 +69,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.textBox1.Location = new System.Drawing.Point(12, 370);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(342, 22);
@@ -76,15 +78,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 351);
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Yellow;
+            this.label1.Location = new System.Drawing.Point(98, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(284, 16);
+            this.label1.Size = new System.Drawing.Size(563, 29);
             this.label1.TabIndex = 3;
             this.label1.Text = "What is the title of the book Kakashi is reading?";
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 5;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // KakashiForm
             // 

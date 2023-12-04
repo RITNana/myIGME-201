@@ -48,21 +48,26 @@
             // 
             // questionLabel
             // 
-            this.questionLabel.AutoSize = true;
+            this.questionLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.questionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.questionLabel.ForeColor = System.Drawing.Color.Red;
             this.questionLabel.Location = new System.Drawing.Point(27, 47);
             this.questionLabel.Name = "questionLabel";
-            this.questionLabel.Size = new System.Drawing.Size(161, 16);
+            this.questionLabel.Size = new System.Drawing.Size(326, 30);
             this.questionLabel.TabIndex = 4;
             this.questionLabel.Text = "Does Hinata love Naruto?";
             // 
             // hinataButton
             // 
+            this.hinataButton.BackColor = System.Drawing.Color.Red;
+            this.hinataButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hinataButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.hinataButton.Location = new System.Drawing.Point(30, 125);
             this.hinataButton.Name = "hinataButton";
             this.hinataButton.Size = new System.Drawing.Size(139, 52);
             this.hinataButton.TabIndex = 3;
             this.hinataButton.Text = "Yes";
-            this.hinataButton.UseVisualStyleBackColor = true;
+            this.hinataButton.UseVisualStyleBackColor = false;
             // 
             // mainForm
             // 
@@ -78,7 +83,6 @@
             this.Text = "Hinata";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

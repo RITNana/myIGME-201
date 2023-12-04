@@ -63,6 +63,16 @@ namespace Naruto.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boruto_crying {
+            get {
+                object obj = ResourceManager.GetObject("boruto_crying", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap crying {
             get {
                 object obj = ResourceManager.GetObject("crying", resourceCulture);

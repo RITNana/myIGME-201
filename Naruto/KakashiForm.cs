@@ -18,8 +18,8 @@ namespace Naruto
 
 
             this.timer1.Tick += new EventHandler(Timer1__Tick);
-            this.timer1.Interval = 3000;
-            this.toolStripProgressBar1.Value = 3000;
+            this.timer1.Interval = 5;
+            this.toolStripProgressBar1.Value = 10;
             this.textBox1.Click += new EventHandler(TextBox1__Click);
           
         }
@@ -34,8 +34,17 @@ namespace Naruto
             --this.toolStripProgressBar1.Value;
             if(this.toolStripProgressBar1.Value == 0)
             {
+                timer1.Stop();
                 MessageBox.Show("Too Slow!");
+                MessageBox.Show("Next Form!");
+                Singing singing = new Singing();
+                singing.ShowDialog();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
