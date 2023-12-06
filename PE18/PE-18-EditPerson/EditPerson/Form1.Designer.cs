@@ -84,10 +84,10 @@
             "Student",
             "Teacher"});
             this.typeComboBox.Location = new System.Drawing.Point(106, 26);
-            this.typeComboBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.typeComboBox.Margin = new System.Windows.Forms.Padding(5);
             this.typeComboBox.MaxDropDownItems = 2;
             this.typeComboBox.Name = "typeComboBox";
-            this.typeComboBox.Size = new System.Drawing.Size(157, 27);
+            this.typeComboBox.Size = new System.Drawing.Size(157, 30);
             this.typeComboBox.TabIndex = 0;
             // 
             // nameLabel
@@ -106,9 +106,9 @@
             // 
             this.nameText.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.nameText.Location = new System.Drawing.Point(106, 77);
-            this.nameText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.nameText.Margin = new System.Windows.Forms.Padding(5);
             this.nameText.Name = "nameText";
-            this.nameText.Size = new System.Drawing.Size(275, 25);
+            this.nameText.Size = new System.Drawing.Size(275, 29);
             this.nameText.TabIndex = 1;
             // 
             // emailLabel
@@ -127,9 +127,9 @@
             // 
             this.emailText.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.emailText.Location = new System.Drawing.Point(106, 131);
-            this.emailText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.emailText.Margin = new System.Windows.Forms.Padding(5);
             this.emailText.Name = "emailText";
-            this.emailText.Size = new System.Drawing.Size(468, 25);
+            this.emailText.Size = new System.Drawing.Size(468, 29);
             this.emailText.TabIndex = 2;
             // 
             // ageLabel
@@ -148,9 +148,9 @@
             // 
             this.ageText.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ageText.Location = new System.Drawing.Point(106, 188);
-            this.ageText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ageText.Margin = new System.Windows.Forms.Padding(5);
             this.ageText.Name = "ageText";
-            this.ageText.Size = new System.Drawing.Size(78, 25);
+            this.ageText.Size = new System.Drawing.Size(78, 29);
             this.ageText.TabIndex = 3;
             // 
             // licLabel
@@ -164,14 +164,15 @@
             this.licLabel.Size = new System.Drawing.Size(94, 19);
             this.licLabel.TabIndex = 4;
             this.licLabel.Text = "License Id:";
+            this.licLabel.Click += new System.EventHandler(this.licLabel_Click);
             // 
             // licText
             // 
             this.licText.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.licText.Location = new System.Drawing.Point(106, 247);
-            this.licText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.licText.Margin = new System.Windows.Forms.Padding(5);
             this.licText.Name = "licText";
-            this.licText.Size = new System.Drawing.Size(157, 25);
+            this.licText.Size = new System.Drawing.Size(157, 29);
             this.licText.TabIndex = 4;
             // 
             // specialtyLabel
@@ -189,9 +190,9 @@
             // 
             this.specText.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.specText.Location = new System.Drawing.Point(106, 303);
-            this.specText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.specText.Margin = new System.Windows.Forms.Padding(5);
             this.specText.Name = "specText";
-            this.specText.Size = new System.Drawing.Size(468, 25);
+            this.specText.Size = new System.Drawing.Size(468, 29);
             this.specText.TabIndex = 5;
             // 
             // gpaLabel
@@ -212,16 +213,16 @@
             this.gpaText.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpaText.ForeColor = System.Drawing.SystemColors.WindowText;
             this.gpaText.Location = new System.Drawing.Point(106, 303);
-            this.gpaText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gpaText.Margin = new System.Windows.Forms.Padding(5);
             this.gpaText.Name = "gpaText";
-            this.gpaText.Size = new System.Drawing.Size(78, 25);
+            this.gpaText.Size = new System.Drawing.Size(78, 29);
             this.gpaText.TabIndex = 5;
             // 
             // okButton
             // 
             this.okButton.ForeColor = System.Drawing.Color.Green;
             this.okButton.Location = new System.Drawing.Point(375, 355);
-            this.okButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.okButton.Margin = new System.Windows.Forms.Padding(5);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(74, 36);
             this.okButton.TabIndex = 6;
@@ -233,7 +234,7 @@
             this.cancelButton.CausesValidation = false;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(590, 355);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(5);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(74, 36);
             this.cancelButton.TabIndex = 7;
@@ -249,9 +250,9 @@
             this.himRadioButton.AutoSize = true;
             this.himRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(71)))), ((int)(((byte)(73)))));
             this.himRadioButton.Location = new System.Drawing.Point(7, 27);
-            this.himRadioButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.himRadioButton.Margin = new System.Windows.Forms.Padding(5);
             this.himRadioButton.Name = "himRadioButton";
-            this.himRadioButton.Size = new System.Drawing.Size(55, 23);
+            this.himRadioButton.Size = new System.Drawing.Size(67, 28);
             this.himRadioButton.TabIndex = 8;
             this.himRadioButton.TabStop = true;
             this.himRadioButton.Text = "Him";
@@ -262,9 +263,9 @@
             this.herRadioButton.AutoSize = true;
             this.herRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(71)))), ((int)(((byte)(73)))));
             this.herRadioButton.Location = new System.Drawing.Point(7, 57);
-            this.herRadioButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.herRadioButton.Margin = new System.Windows.Forms.Padding(5);
             this.herRadioButton.Name = "herRadioButton";
-            this.herRadioButton.Size = new System.Drawing.Size(52, 23);
+            this.herRadioButton.Size = new System.Drawing.Size(62, 28);
             this.herRadioButton.TabIndex = 9;
             this.herRadioButton.TabStop = true;
             this.herRadioButton.Text = "Her";
@@ -276,9 +277,9 @@
             this.themRadioButton.AutoSize = true;
             this.themRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(71)))), ((int)(((byte)(73)))));
             this.themRadioButton.Location = new System.Drawing.Point(7, 87);
-            this.themRadioButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.themRadioButton.Margin = new System.Windows.Forms.Padding(5);
             this.themRadioButton.Name = "themRadioButton";
-            this.themRadioButton.Size = new System.Drawing.Size(64, 23);
+            this.themRadioButton.Size = new System.Drawing.Size(80, 28);
             this.themRadioButton.TabIndex = 10;
             this.themRadioButton.TabStop = true;
             this.themRadioButton.Text = "Them";
@@ -290,9 +291,9 @@
             this.froshRadioButton.AutoSize = true;
             this.froshRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(71)))), ((int)(((byte)(73)))));
             this.froshRadioButton.Location = new System.Drawing.Point(8, 24);
-            this.froshRadioButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.froshRadioButton.Margin = new System.Windows.Forms.Padding(5);
             this.froshRadioButton.Name = "froshRadioButton";
-            this.froshRadioButton.Size = new System.Drawing.Size(91, 23);
+            this.froshRadioButton.Size = new System.Drawing.Size(114, 28);
             this.froshRadioButton.TabIndex = 11;
             this.froshRadioButton.TabStop = true;
             this.froshRadioButton.Text = "Freshman";
@@ -303,9 +304,9 @@
             this.sophRadioButton.AutoSize = true;
             this.sophRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(71)))), ((int)(((byte)(73)))));
             this.sophRadioButton.Location = new System.Drawing.Point(8, 57);
-            this.sophRadioButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.sophRadioButton.Margin = new System.Windows.Forms.Padding(5);
             this.sophRadioButton.Name = "sophRadioButton";
-            this.sophRadioButton.Size = new System.Drawing.Size(106, 23);
+            this.sophRadioButton.Size = new System.Drawing.Size(130, 28);
             this.sophRadioButton.TabIndex = 12;
             this.sophRadioButton.TabStop = true;
             this.sophRadioButton.Text = "Sophomore";
@@ -316,9 +317,9 @@
             this.juniorRadioButton.AutoSize = true;
             this.juniorRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(71)))), ((int)(((byte)(73)))));
             this.juniorRadioButton.Location = new System.Drawing.Point(8, 90);
-            this.juniorRadioButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.juniorRadioButton.Margin = new System.Windows.Forms.Padding(5);
             this.juniorRadioButton.Name = "juniorRadioButton";
-            this.juniorRadioButton.Size = new System.Drawing.Size(68, 23);
+            this.juniorRadioButton.Size = new System.Drawing.Size(84, 28);
             this.juniorRadioButton.TabIndex = 13;
             this.juniorRadioButton.TabStop = true;
             this.juniorRadioButton.Text = "Junior";
@@ -330,9 +331,9 @@
             this.seniorRadioButton.AutoSize = true;
             this.seniorRadioButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(71)))), ((int)(((byte)(73)))));
             this.seniorRadioButton.Location = new System.Drawing.Point(8, 125);
-            this.seniorRadioButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.seniorRadioButton.Margin = new System.Windows.Forms.Padding(5);
             this.seniorRadioButton.Name = "seniorRadioButton";
-            this.seniorRadioButton.Size = new System.Drawing.Size(70, 23);
+            this.seniorRadioButton.Size = new System.Drawing.Size(85, 28);
             this.seniorRadioButton.TabIndex = 14;
             this.seniorRadioButton.TabStop = true;
             this.seniorRadioButton.Text = "Senior";
@@ -344,9 +345,9 @@
             this.genderGroupBox.Controls.Add(this.himRadioButton);
             this.genderGroupBox.Controls.Add(this.herRadioButton);
             this.genderGroupBox.Location = new System.Drawing.Point(606, 77);
-            this.genderGroupBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.genderGroupBox.Margin = new System.Windows.Forms.Padding(5);
             this.genderGroupBox.Name = "genderGroupBox";
-            this.genderGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.genderGroupBox.Padding = new System.Windows.Forms.Padding(5);
             this.genderGroupBox.Size = new System.Drawing.Size(120, 132);
             this.genderGroupBox.TabIndex = 6;
             this.genderGroupBox.TabStop = false;
@@ -360,9 +361,9 @@
             this.classGroupBox.Controls.Add(this.seniorRadioButton);
             this.classGroupBox.Controls.Add(this.juniorRadioButton);
             this.classGroupBox.Location = new System.Drawing.Point(768, 77);
-            this.classGroupBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.classGroupBox.Margin = new System.Windows.Forms.Padding(5);
             this.classGroupBox.Name = "classGroupBox";
-            this.classGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.classGroupBox.Padding = new System.Windows.Forms.Padding(5);
             this.classGroupBox.Size = new System.Drawing.Size(207, 198);
             this.classGroupBox.TabIndex = 7;
             this.classGroupBox.TabStop = false;
@@ -375,7 +376,7 @@
             this.classOfLabel.Location = new System.Drawing.Point(57, 160);
             this.classOfLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.classOfLabel.Name = "classOfLabel";
-            this.classOfLabel.Size = new System.Drawing.Size(96, 19);
+            this.classOfLabel.Size = new System.Drawing.Size(120, 24);
             this.classOfLabel.TabIndex = 15;
             this.classOfLabel.Text = "Class of 9999";
             this.classOfLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -390,13 +391,13 @@
             // PersonEditForm
             // 
             this.AcceptButton = this.okButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(234)))), ((int)(((byte)(212)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(1094, 625);
+            this.ClientSize = new System.Drawing.Size(1093, 625);
             this.Controls.Add(this.classGroupBox);
             this.Controls.Add(this.genderGroupBox);
             this.Controls.Add(this.cancelButton);
@@ -418,7 +419,7 @@
             this.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(13)))), ((int)(((byte)(48)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1115, 677);
             this.MinimizeBox = false;

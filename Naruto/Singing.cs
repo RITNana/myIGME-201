@@ -13,6 +13,8 @@ namespace Naruto
     public partial class Singing : Form
     {
        private readonly Random random = new Random();
+        private int buttonCounter = 0;
+        private Timer timer;
         public Singing()
         {
             InitializeComponent();
@@ -50,28 +52,42 @@ namespace Naruto
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            
-            // Create a new Button
-            Button randomButton = new Button();
-            randomButton.Text = "Random Button";
-            randomButton.Size = new Size(100, 50); // Set the button size
-            randomButton.Location = new Point(random.Next(this.ClientSize.Width - randomButton.Width), random.Next(this.ClientSize.Height - randomButton.Height));
-            // Generate random position within the form
+            if (buttonCounter < 10)
+            {
+                // Create a new Button
+                Button randomButton = new Button();
+                randomButton.Text = "Random Button";
+                randomButton.Size = new Size(100, 50); // Set the button size
+                randomButton.Location = new Point(random.Next(this.ClientSize.Width - randomButton.Width), random.Next(this.ClientSize.Height - randomButton.Height));
+                // Generate random position within the form
 
-            randomButton.Click += RandomButton__Click;
+                randomButton.Click += RandomButton_Click;
 
-            this.Controls.Add(randomButton);
-            randomButton.BringToFront();
+                this.Controls.Add(randomButton); // Add the button to the form
 
+                randomButton.BringToFront(); // Bring the button to the front
+
+                buttonCounter++;
+
+                if (buttonCounter == 10)
+                {
+                    timer.Stop(); // Stop the timer when 10 buttons are created
+                }
+            }
+            else
+            {
+                timer.Stop(); // Stop the timer if already 10 buttons
+            }
         }
 
-        private void RandomButton__Click(object sender, EventArgs e)
+        private void RandomButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Button Clicked!");
         }
-
-
-
-
     }
+
+
+
+
 }
+

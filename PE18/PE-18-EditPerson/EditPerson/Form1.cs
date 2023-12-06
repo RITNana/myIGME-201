@@ -532,5 +532,10 @@ namespace EditPerson
         {
 
         }
+
+        private void licLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
