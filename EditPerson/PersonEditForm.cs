@@ -155,7 +155,7 @@ namespace EditPerson
             this.photoPictureBox.ImageLocation = person.photoPath;
 
             if (person is Student student)
-            //if( person.GetType() == typeof(Student) )
+            //if(person.GetType() == typeof(Student) )
             {
                 //Student student = (Student)person;
 

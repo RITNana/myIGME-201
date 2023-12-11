@@ -155,6 +155,8 @@ namespace LinkedList
 
         private void Button1__Click(object sender, EventArgs e)
         {
+
+            
             // 1. create a LinkedList which contains the digits 1 through 10
             LinkedList<object> linkedList = new LinkedList<object>();
 
@@ -166,6 +168,9 @@ namespace LinkedList
 
             // 3. then call the visualizer
             VisualizeLinkedList visualizeLinkedList = new VisualizeLinkedList(linkedList);
+            
+
+            
         }
 
         private void Button2__Click(object sender, EventArgs e)
