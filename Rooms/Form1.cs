@@ -12,9 +12,9 @@ using RoomsLib;
 namespace Rooms
 {
     
-    public partial class Form1 : Form
+    public partial class RoomForm : Form
     {
-        public Form1()
+        public RoomForm()
         {
             InitializeComponent();
 

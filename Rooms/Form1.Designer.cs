@@ -1,6 +1,6 @@
 ﻿namespace Rooms
 {
-    partial class Form1
+    partial class RoomForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.roomReservationTabControl = new System.Windows.Forms.TabControl();
             this.buildingTabPage = new System.Windows.Forms.TabPage();
+            this.logpPictureBox = new System.Windows.Forms.PictureBox();
             this.shedButton = new System.Windows.Forms.Button();
             this.sauButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,28 +45,27 @@
             this.SAULabel = new System.Windows.Forms.LinkLabel();
             this.wallaceLabel = new System.Windows.Forms.LinkLabel();
             this.buildingGroupBox = new System.Windows.Forms.GroupBox();
-            this.selectRoomTabPage = new System.Windows.Forms.TabPage();
-            this.roomGroupBox = new System.Windows.Forms.GroupBox();
-            this.allRoomsListView = new System.Windows.Forms.ListView();
-            this.logpPictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.selectRoomTabPage = new System.Windows.Forms.TabPage();
             this.seacrhLabel = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.roomGroupBox = new System.Windows.Forms.GroupBox();
+            this.allRoomsListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.availableHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.roomReservationTabControl.SuspendLayout();
             this.buildingTabPage.SuspendLayout();
-            this.buildingGroupBox.SuspendLayout();
-            this.selectRoomTabPage.SuspendLayout();
-            this.roomGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logpPictureBox)).BeginInit();
+            this.buildingGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.selectRoomTabPage.SuspendLayout();
+            this.roomGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             this.roomReservationTabControl.Controls.Add(this.selectRoomTabPage);
             this.roomReservationTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.roomReservationTabControl.Location = new System.Drawing.Point(0, 0);
-            this.roomReservationTabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roomReservationTabControl.Margin = new System.Windows.Forms.Padding(4);
             this.roomReservationTabControl.Name = "roomReservationTabControl";
             this.roomReservationTabControl.SelectedIndex = 0;
             this.roomReservationTabControl.Size = new System.Drawing.Size(1253, 663);
@@ -99,19 +99,30 @@
             this.buildingTabPage.Controls.Add(this.wallaceLabel);
             this.buildingTabPage.Controls.Add(this.buildingGroupBox);
             this.buildingTabPage.Location = new System.Drawing.Point(4, 25);
-            this.buildingTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buildingTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.buildingTabPage.Name = "buildingTabPage";
-            this.buildingTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buildingTabPage.Padding = new System.Windows.Forms.Padding(4);
             this.buildingTabPage.Size = new System.Drawing.Size(1245, 634);
             this.buildingTabPage.TabIndex = 0;
             this.buildingTabPage.Text = "Home";
             this.buildingTabPage.UseVisualStyleBackColor = true;
-           
+            // 
+            // logpPictureBox
+            // 
+            this.logpPictureBox.BackColor = System.Drawing.Color.Black;
+            this.logpPictureBox.Image = global::Rooms.Properties.Resources.Team_3_App__3_;
+            this.logpPictureBox.Location = new System.Drawing.Point(11, 7);
+            this.logpPictureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.logpPictureBox.Name = "logpPictureBox";
+            this.logpPictureBox.Size = new System.Drawing.Size(200, 70);
+            this.logpPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logpPictureBox.TabIndex = 38;
+            this.logpPictureBox.TabStop = false;
             // 
             // shedButton
             // 
             this.shedButton.Location = new System.Drawing.Point(527, 502);
-            this.shedButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.shedButton.Margin = new System.Windows.Forms.Padding(4);
             this.shedButton.Name = "shedButton";
             this.shedButton.Size = new System.Drawing.Size(147, 62);
             this.shedButton.TabIndex = 37;
@@ -121,7 +132,7 @@
             // sauButton
             // 
             this.sauButton.Location = new System.Drawing.Point(527, 345);
-            this.sauButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sauButton.Margin = new System.Windows.Forms.Padding(4);
             this.sauButton.Name = "sauButton";
             this.sauButton.Size = new System.Drawing.Size(147, 66);
             this.sauButton.TabIndex = 36;
@@ -152,7 +163,7 @@
             // 
             this.filterComboBox.FormattingEnabled = true;
             this.filterComboBox.Location = new System.Drawing.Point(1037, 18);
-            this.filterComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.filterComboBox.Name = "filterComboBox";
             this.filterComboBox.Size = new System.Drawing.Size(160, 24);
             this.filterComboBox.TabIndex = 33;
@@ -161,7 +172,7 @@
             // wallaceButton
             // 
             this.wallaceButton.Location = new System.Drawing.Point(527, 162);
-            this.wallaceButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wallaceButton.Margin = new System.Windows.Forms.Padding(4);
             this.wallaceButton.Name = "wallaceButton";
             this.wallaceButton.Size = new System.Drawing.Size(147, 62);
             this.wallaceButton.TabIndex = 32;
@@ -256,68 +267,13 @@
             this.buildingGroupBox.Controls.Add(this.pictureBox2);
             this.buildingGroupBox.Controls.Add(this.pictureBox1);
             this.buildingGroupBox.Location = new System.Drawing.Point(4, 85);
-            this.buildingGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buildingGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.buildingGroupBox.Name = "buildingGroupBox";
-            this.buildingGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buildingGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.buildingGroupBox.Size = new System.Drawing.Size(305, 537);
             this.buildingGroupBox.TabIndex = 24;
             this.buildingGroupBox.TabStop = false;
             this.buildingGroupBox.Text = "Building Name";
-            // 
-            // selectRoomTabPage
-            // 
-            this.selectRoomTabPage.Controls.Add(this.seacrhLabel);
-            this.selectRoomTabPage.Controls.Add(this.textBox1);
-            this.selectRoomTabPage.Controls.Add(this.roomGroupBox);
-            this.selectRoomTabPage.Controls.Add(this.pictureBox4);
-            this.selectRoomTabPage.Location = new System.Drawing.Point(4, 25);
-            this.selectRoomTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.selectRoomTabPage.Name = "selectRoomTabPage";
-            this.selectRoomTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.selectRoomTabPage.Size = new System.Drawing.Size(1245, 634);
-            this.selectRoomTabPage.TabIndex = 1;
-            this.selectRoomTabPage.Text = "Select";
-            this.selectRoomTabPage.UseVisualStyleBackColor = true;
-            // 
-            // roomGroupBox
-            // 
-            this.roomGroupBox.Controls.Add(this.allRoomsListView);
-            this.roomGroupBox.Location = new System.Drawing.Point(4, 149);
-            this.roomGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.roomGroupBox.Name = "roomGroupBox";
-            this.roomGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.roomGroupBox.Size = new System.Drawing.Size(1244, 487);
-            this.roomGroupBox.TabIndex = 40;
-            this.roomGroupBox.TabStop = false;
-            this.roomGroupBox.Text = "Choose Room";
-            // 
-            // allRoomsListView
-            // 
-            this.allRoomsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.availableHeader});
-            this.allRoomsListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.allRoomsListView.HideSelection = false;
-            this.allRoomsListView.Location = new System.Drawing.Point(4, 19);
-            this.allRoomsListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.allRoomsListView.Name = "allRoomsListView";
-            this.allRoomsListView.Size = new System.Drawing.Size(1236, 464);
-            this.allRoomsListView.TabIndex = 0;
-            this.allRoomsListView.UseCompatibleStateImageBehavior = false;
-            this.allRoomsListView.View = System.Windows.Forms.View.Details;
-            // 
-            // logpPictureBox
-            // 
-            this.logpPictureBox.BackColor = System.Drawing.Color.Black;
-            this.logpPictureBox.Image = global::Rooms.Properties.Resources.Team_3_App__3_;
-            this.logpPictureBox.Location = new System.Drawing.Point(11, 7);
-            this.logpPictureBox.Margin = new System.Windows.Forms.Padding(4);
-            this.logpPictureBox.Name = "logpPictureBox";
-            this.logpPictureBox.Size = new System.Drawing.Size(200, 70);
-            this.logpPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.logpPictureBox.TabIndex = 38;
-            this.logpPictureBox.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -330,7 +286,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
-           
             // 
             // pictureBox2
             // 
@@ -356,24 +311,20 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox4
+            // selectRoomTabPage
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Black;
-            this.pictureBox4.Image = global::Rooms.Properties.Resources.Team_3_App__3_;
-            this.pictureBox4.Location = new System.Drawing.Point(0, 4);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(200, 70);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 39;
-            this.pictureBox4.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(435, 120);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(321, 22);
-            this.textBox1.TabIndex = 41;
+            this.selectRoomTabPage.Controls.Add(this.seacrhLabel);
+            this.selectRoomTabPage.Controls.Add(this.textBox1);
+            this.selectRoomTabPage.Controls.Add(this.roomGroupBox);
+            this.selectRoomTabPage.Controls.Add(this.pictureBox4);
+            this.selectRoomTabPage.Location = new System.Drawing.Point(4, 25);
+            this.selectRoomTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.selectRoomTabPage.Name = "selectRoomTabPage";
+            this.selectRoomTabPage.Padding = new System.Windows.Forms.Padding(4);
+            this.selectRoomTabPage.Size = new System.Drawing.Size(1245, 634);
+            this.selectRoomTabPage.TabIndex = 1;
+            this.selectRoomTabPage.Text = "Select";
+            this.selectRoomTabPage.UseVisualStyleBackColor = true;
             // 
             // seacrhLabel
             // 
@@ -383,6 +334,41 @@
             this.seacrhLabel.Size = new System.Drawing.Size(50, 16);
             this.seacrhLabel.TabIndex = 42;
             this.seacrhLabel.Text = "Search";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(435, 120);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(321, 22);
+            this.textBox1.TabIndex = 41;
+            // 
+            // roomGroupBox
+            // 
+            this.roomGroupBox.Controls.Add(this.allRoomsListView);
+            this.roomGroupBox.Location = new System.Drawing.Point(4, 149);
+            this.roomGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.roomGroupBox.Name = "roomGroupBox";
+            this.roomGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.roomGroupBox.Size = new System.Drawing.Size(1244, 487);
+            this.roomGroupBox.TabIndex = 40;
+            this.roomGroupBox.TabStop = false;
+            this.roomGroupBox.Text = "Choose Room";
+            // 
+            // allRoomsListView
+            // 
+            this.allRoomsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.availableHeader});
+            this.allRoomsListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allRoomsListView.HideSelection = false;
+            this.allRoomsListView.Location = new System.Drawing.Point(4, 19);
+            this.allRoomsListView.Margin = new System.Windows.Forms.Padding(4);
+            this.allRoomsListView.Name = "allRoomsListView";
+            this.allRoomsListView.Size = new System.Drawing.Size(1236, 464);
+            this.allRoomsListView.TabIndex = 0;
+            this.allRoomsListView.UseCompatibleStateImageBehavior = false;
+            this.allRoomsListView.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -399,6 +385,18 @@
             this.availableHeader.Text = "Availibility";
             this.availableHeader.Width = 90;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Black;
+            this.pictureBox4.Image = global::Rooms.Properties.Resources.Team_3_App__3_;
+            this.pictureBox4.Location = new System.Drawing.Point(0, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(200, 70);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 39;
+            this.pictureBox4.TabStop = false;
+            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -406,20 +404,20 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1253, 663);
             this.Controls.Add(this.roomReservationTabControl);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RoomForm";
             this.Text = "Room Reservation";
             this.roomReservationTabControl.ResumeLayout(false);
             this.buildingTabPage.ResumeLayout(false);
             this.buildingTabPage.PerformLayout();
-            this.buildingGroupBox.ResumeLayout(false);
-            this.selectRoomTabPage.ResumeLayout(false);
-            this.selectRoomTabPage.PerformLayout();
-            this.roomGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logpPictureBox)).EndInit();
+            this.buildingGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.selectRoomTabPage.ResumeLayout(false);
+            this.selectRoomTabPage.PerformLayout();
+            this.roomGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
