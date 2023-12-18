@@ -7,29 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RoomsLib;
 
 namespace Rooms
 {
-    public partial class RoomForm : Form
+    
+    public partial class Form1 : Form
     {
-        public RoomForm()
+        public Form1()
         {
             InitializeComponent();
-        }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
+            // Create a ListView control
+            ListView listView = new ListView();
+            listView.View = View.Details;
+            listView.Columns.Add("Room Numbers", 120);
 
-        }
+            // Get the generated room numbers from the class library
+            var roomNumbers = RoomList.GenerateRoomNumbers();
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            // Add room numbers to the ListView
+            foreach (var room in roomNumbers)
+            {
+                listView.Items.Add(room.ToString());
+            }
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            // Add the ListView to the form
+            this.Controls.Add(listView);
         }
     }
 }
+

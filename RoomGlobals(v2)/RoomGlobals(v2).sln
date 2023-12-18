@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomGlobals(v2)", "RoomGlobals(v2).csproj", "{0CFE176D-3338-4F2A-8A72-24FB3D394EF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CFE176D-3338-4F2A-8A72-24FB3D394EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CFE176D-3338-4F2A-8A72-24FB3D394EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CFE176D-3338-4F2A-8A72-24FB3D394EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CFE176D-3338-4F2A-8A72-24FB3D394EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E06614B-7728-40D8-88B3-963FF7A0181D}
+	EndGlobalSection
+EndGlobal
