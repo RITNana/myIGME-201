@@ -35,18 +35,18 @@ namespace FinalExam_ColorDigraph
         // the adjacency values for the directed graph version.  
         // Only allow the paths that reach the goal
 
-        // adjacency matrix
-        static bool[,] mGraph = new bool[,]
+        // adjacency matrix for our colors
+        static int[,] mGraph = new int[,]
               {
              /*red*/   /*indigo*/ /*gray*/  /*blue*/ /*orange*/ /*violet*/ /*yellow*/ /*green*/
-  /*Red*/    { false   , true    , true   , false   , false    , false   , false   , false },
-  /*Indigo*/ { false   , false   , false   , true    , false   , false   , true   , false },
-  /*Gray*/   { false    , false   , false   , true   , true   , false   , false   , false },
-  /*Blue*/   { false   , true   , true   , false   , false   , false   , false   , false },
-  /*Orange*/ { false   , false   , false   , false   , false   , true   , false    , false },
-  /*Violet*/ { false   , false   , false   , false   , false   , false   , true   , false },
-  /*Yellow*/ { false   , false   , false   , false   , false   , false   , false   , true },
-  /*Green*/  { false   , false   , false   , false   , false   , false    , false   , false }
+  /*Red*/    { -1   ,    1    ,      5   ,     -1   ,    -1    ,    -1   ,      -1   ,  -1 },
+  /*Indigo*/ { -1   ,   -1   ,      -1   ,      1    ,   -1   ,     -1   ,       8   ,  -1 },
+  /*Gray*/   { -1    ,  -1   ,      -1   ,     -1   ,     1   ,     -1   ,      -1   ,  -1 },
+  /*Blue*/   { -1   ,    1   ,      -1   ,     -1   ,    -1   ,     -1   ,      -1   ,  -1 },
+  /*Orange*/ { -1   ,   -1   ,      -1   ,     -1   ,    -1   ,      1   ,      -1    , -1 },
+  /*Violet*/ { -1   ,   -1   ,      -1   ,     -1   ,    -1   ,     -1   ,       1   ,  -1 },
+  /*Yellow*/ { -1   ,   -1   ,      -1   ,     -1   ,    -1   ,     -1   ,      -1  ,    6 },
+  /*Green*/  { -1   ,   -1   ,      -1   ,     -1   ,    -1   ,     -1,         -1   ,  -1 }
               };
 #endif
 
@@ -65,9 +65,10 @@ namespace FinalExam_ColorDigraph
         /* Green */    null
         };
 
+        // adjacency weighted list
         static int[][] wGraph = new int[][]
        {
-        /* Red */    new int[] {1 ,5 },
+        /* Red */    new int[] {1 ,5},
         /* Indigo */    new int[] {1, 8},
         /* Gray */    new int[] {1},
         /* Blue */    new int[] {1 },
@@ -86,13 +87,17 @@ namespace FinalExam_ColorDigraph
 
         static int nState = 0;
 
+        // Create our color nodes
+        // Assign the edge values to the,
+        // Use Depth First Search
+        // Use Dijkstra's Shortest Path
         static void Main(string[] args)
         {
 
-          PrintAdjacencyMatrix(mGraph);
+            PrintAdjacencyMatrix(mGraph); // displasy the Adjacecncy Matrix
             Console.WriteLine();
-            PrintAdjacencyList(lGraph);
-            Console.WriteLine(); 
+            PrintAdjacencyList(lGraph); // Displays the Adjacency List
+            Console.WriteLine();
 
             colors = new List<Node>();
             Node node;
@@ -156,10 +161,23 @@ namespace FinalExam_ColorDigraph
 
 
             // create a thread for the Depth First Search and start search
-              Thread t = new Thread(DFS);
-              t.Start();
+            Thread t = new Thread(DFS);
+            t.Start();
 
-          
+            
+
+            // Get the shortest path after starting the DFS thread
+            List<Node> shortestPath = GetShortestPathDijkstra();
+
+            // Output the nodes in the shortest path
+            Console.WriteLine("Shortest Path from Red to Green:");
+            foreach (var color in shortestPath)
+            {
+                Console.WriteLine(((EColorState)color.nState).ToString());
+            }
+
+
+
 
 
         }
@@ -202,37 +220,144 @@ namespace FinalExam_ColorDigraph
             DFSUtil(0, visited);
         }
 
-          static void PrintAdjacencyMatrix(bool[,] matrix)
-          {
-              Console.WriteLine("Adjacency Matrix:");
-              for (int i = 0; i < matrix.GetLength(0); i++)
-              {
-                  for (int j = 0; j < matrix.GetLength(1); j++)
-                  {
-                      Console.Write(matrix[i, j] ? "1 " : "0 ");
-                  }
-                  Console.WriteLine();
-              }
-          }
 
-          static void PrintAdjacencyList(int[][] list)
-          {
-              Console.WriteLine("Adjacency List:");
-              for (int i = 0; i < list.Length; i++)
-              {
-                  Console.Write($"Node {i}: ");
-                  if (list[i] != null)
-                  {
-                      foreach (var edge in list[i])
-                      {
-                          Console.Write($"{edge} ");
-                      }
-                  }
-                  Console.WriteLine();
-              }
-          } 
+        // Print out the Adjancency Matrix 
+        static void PrintAdjacencyMatrix(int[,] matrix)
+        {
+            Console.WriteLine("Adjacency Matrix:");
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] != -1 ? matrix[i, j] + " " : "- ");
+                }
+                Console.WriteLine();
+            }
+        }
 
-        public class Node : IComparable<Node>
+        // Print out the Adjancency List 
+        static void PrintAdjacencyList(int[][] list)
+        {
+            Console.WriteLine("Adjacency List:");
+            for (int i = 0; i < list.Length; i++)
+            {
+                Console.Write($"Node {i}: ");
+                if (list[i] != null)
+                {
+                    foreach (var edge in list[i])
+                    {
+                        Console.Write($"{edge} ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static public List<Node> GetShortestPathDijkstra()
+        {
+            // set up all distances from every vertex to the start vertex
+            DijkstraSearch();
+
+            // the list of nodes that will be the shortest path from the start
+            List<Node> shortestPath = new List<Node>();
+
+            // add the target node
+            shortestPath.Add(colors[(int)EColorState.green]);
+
+            // populate the List of nodes from the target node back to the start
+            BuildShortestPath(shortestPath, colors[(int)EColorState.green]);
+
+            // reverse the List to give the path from the start to the finish
+            shortestPath.Reverse();
+
+            return (shortestPath);
+        }
+
+        static private void BuildShortestPath(List<Node> list, Node node)
+        {
+            if (node.nearestToStart == null)
+            {
+                return;
+            }
+
+            list.Add(node.nearestToStart);
+            BuildShortestPath(list, node.nearestToStart);
+        }
+
+        static private int NodeOrderBy(Node n)
+        {
+            return n.minCostToStart;
+        }
+
+        static private void DijkstraSearch()
+        {
+            Node start = colors[(int)EColorState.red];
+
+            start.minCostToStart = 0;
+            List<Node> prioQueue = new List<Node>();
+            prioQueue.Add(start);
+
+            //Func<Node, int> nodeOrderBy = new Func<Node, int>(NodeOrderBy);
+            Func<Node, int> nodeOrderBy = NodeOrderBy;
+
+            do
+            {
+                // sort our prioQueue by minCostToStart
+                // option #1, use .Sort() which sorts in place
+                prioQueue.Sort();
+
+                Node node = prioQueue.First();
+                prioQueue.Remove(node);
+                foreach (Edge cnn in node.edges)
+                // if we do not sort each list of edges after populating them for a node,
+                // we can create a temporary sorted list for this loop
+                //.OrderBy(delegate(Edge n) { return n.cost; }))
+                {
+                    // look at the neighbor connected to this edge
+                    Node neighborNode = cnn.connectedNode;
+                    if (neighborNode.visited)
+                    {
+                        // skip if we already visited this neighbor
+                        continue;
+                    }
+
+                    // if this neighbor has not been evaluated yet or
+                    // it is closer than the current path to start
+                    if (neighborNode.minCostToStart == int.MaxValue ||
+                        node.minCostToStart + cnn.cost < neighborNode.minCostToStart)
+                    {
+                        // update the cost to start
+                        neighborNode.minCostToStart = node.minCostToStart + cnn.cost;
+
+                        // set the node heading back to start from this neighbor to the 
+                        // node we got here by
+                        neighborNode.nearestToStart = node;
+
+                        // if we don't have this neighbor in our queue
+                        if (!prioQueue.Contains(neighborNode))
+                        {
+                            // add it
+                            prioQueue.Add(neighborNode);
+                        }
+                    }
+                }
+
+                // set this node as visited
+                node.visited = true;
+
+                // if we reached the target node
+                if (node == colors[(int)EColorState.green])
+                {
+                    // we're done!
+                    return;
+                }
+
+                // stay in this loop while there are any items left in our queue
+            } while (prioQueue.Any());
+        }
+    }
+
+    public class Node : IComparable<Node>
         {
             public int nState;
             public List<Edge> edges = new List<Edge>();
@@ -276,5 +401,5 @@ namespace FinalExam_ColorDigraph
             }
         }
     }
-}
+
 
